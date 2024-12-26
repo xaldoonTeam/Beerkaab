@@ -3,22 +3,27 @@ import { Button } from "@/components/ui/button";
 
  function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">About Us</h1>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-b  ">
+      <div
+        className="w-full bg-cover bg-center py-40 text-center relative"
+        style={{
+          backgroundImage:
+            "url('https://img.freepik.com/premium-photo/aerial-view-tractor-applying-chemicals-large-green-field-concept-agricultural-practices-crop-spraying-farm-machinery-precision-agriculture-field-management_864588-221171.jpg?w=1060')",
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <h1 className="text-white text-5xl font-bold relative z-10">About US</h1>
+      </div>
 
       <main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
           <div>
-            <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            <h2 className="text-4xl font-extrabold text-green-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
             Isku Xiraha Beeraleyda iyo Khubarada Qalabka Beerta            </h2>
             <p className="mt-6 text-xl text-gray-500">
             "Boggan waxaa loogu talagalay in uu noqdo meel isku xira beeraleyda doonaya inay kobciyaan wax-soosaarkooda iyo dadka aqoonta gaarka ah u leh qalabka beerta. Hadafkeenna waa inaan fududeyno wada shaqeynta iyo isdhaafsiga macluumaadka, si beeraleydu u helaan qalabkii saxda ahaa iyo hagid ay ku horumariyaan tacabkooda. Adiga oo ah beeraley, waxaad ka heli kartaa xalal waxtar leh, halka khubarada qalabka beerta ay halkan ku wadaagaan aqoontooda iyo adeegyo tayo leh."            </p>
             <div className="mt-8">
-              <Button size="lg">Learn More</Button>
+              <Button size="lg" className=" bg-green-90">Learn More</Button>
             </div>
           </div>
           <div className="mt-12 lg:mt-0">

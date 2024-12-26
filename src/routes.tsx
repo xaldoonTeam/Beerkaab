@@ -5,7 +5,6 @@ import Navbars from './components/ui/nav'
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Footer from './pages/Footer';
-
 const Router =()=>{
   // const search =(query)=>{
     
@@ -15,12 +14,12 @@ const Router =()=>{
         <div className=" ">
             {/* <Head/> */}
         </div>
-    <div className="">
+    <div className=" static z-50">
       {/* <Search  /> */}
            <Navbars/>
         {/* <Header/> */}
     </div>
-    <div>
+    <div className=' '>
         <Outlet/>
     </div>
     <div className=''><Footer/></div>
@@ -80,7 +79,8 @@ export const router= createBrowserRouter([
               {
                 path:'about',
                 element:<About/>
-              }
+              },
+            
 
         ]
     },
