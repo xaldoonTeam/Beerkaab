@@ -8,7 +8,8 @@ import bglottie2 from "../../public/ending trip.json";
 import bglottie5 from "../../public/animationdata5.json";
 import Categories from './Ctegory';
 import Tools from './Tools'
-
+import Services from './Services'
+import Blog from './Blog'
 const HomePage = () => {
   const [currentAnimationIndex, setCurrentAnimationIndex] = useState(0);
   const animationDataList = [animationData1, bglottie5, bglottie2];
@@ -64,6 +65,8 @@ Dalbo Hadda  </button>
     </div>
     <Tools/>
     <Categories/>
+    <Services/>
+    <Blog/>
     </>
   );
 };
