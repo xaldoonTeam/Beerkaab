@@ -15,7 +15,7 @@ const Router =()=>{
         <div className=" ">
             {/* <Head/> */}
         </div>
-    <div className="   ">
+    <div className=" static">
       {/* <Search  /> */}
            <Navbars/>
         {/* <Header/> */}
