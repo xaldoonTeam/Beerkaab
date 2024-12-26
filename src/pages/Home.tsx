@@ -3,13 +3,14 @@ import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import  animationData1 from "../../public/animationData1.json"
 import  animationData2 from "../../public/animationData2.json"
-import  bglottie2 from "../../public/bg lottie2.json"
-import  bglottie3 from "../../public/bglottie.json"
+import  animationData3 from "../../public/animation_lmi2b8gl.json"
+import  bglottie2 from "../../public/ending trip.json"
+import  bglottie5 from "../../public/animationdata5.json"
 
 
 function HomePage() {
   const [currentAnimationIndex, setCurrentAnimationIndex] = useState(0);
-  const animationDataList = [animationData1 , animationData2, bglottie2, bglottie3];
+  const animationDataList = [animationData1,bglottie5,animationData2,bglottie5 , animationData2,animationData3,bglottie2];
   const handleAnimationComplete = () => {
     setCurrentAnimationIndex((prevIndex) => (prevIndex + 1) % animationDataList.length);
   };
@@ -26,7 +27,7 @@ Milaygu waa milaygii
 Rag maleeganayoo
 Naago mooska hurdeen!!
             </p>
-            <button className='btnh text-center m-4 font-semibold p-4 rounded-lg hover:bg-[#e81383] hover:text-white'>
+            <button className='btnh bg-green-700 text-white text-center m-4 font-semibold p-4 rounded-lg hover:bg-[#e81383] hover:text-white'>
               Shop Now
             </button>
           </div>
