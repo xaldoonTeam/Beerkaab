@@ -77,7 +77,7 @@ const HomePage = () => {
     
     bglottie2,
   ];
-
+ls
   const handleAnimationComplete = () => {
     setCurrentAnimationIndex(
       (prevIndex) => (prevIndex + 1) % animationDataList.length
