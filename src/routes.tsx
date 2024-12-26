@@ -1,9 +1,10 @@
 import {createBrowserRouter ,Outlet} from 'react-router-dom'
 // import Header from './components/Header/Header'
-import React from 'react'
 import HomePage from './pages/Home'
 import Navbars from './components/ui/nav'
-
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Footer from './pages/Footer';
 
 const Router =()=>{
   // const search =(query)=>{
@@ -22,7 +23,7 @@ const Router =()=>{
     <div>
         <Outlet/>
     </div>
-    <div>footer</div>
+    <div className=''><Footer/></div>
     </div>
  )
 }
@@ -37,10 +38,7 @@ export const router= createBrowserRouter([
                 index: true,
                 element: <HomePage/>
             },
-            {
-                path:'about',
-                element: <h1>this is about page</h1>
-            },
+           
             {
                 path:'register',
                 // element: <Register/>
@@ -53,10 +51,7 @@ export const router= createBrowserRouter([
                 path: "shop",
                 // element: <ShopP/>
             },
-            {
-                path:'*',
-                // element: <NotFound/>
-            },
+           
            
             {
                 path:'login',
@@ -77,7 +72,15 @@ export const router= createBrowserRouter([
             {
               path:'allProducts',
             //   element:<ProductsHome/>
-            }
+            },
+            {
+                path:'Contact',
+                element:<Contact/>
+              },
+              {
+                path:'about',
+                element:<About/>
+              }
 
         ]
     },
