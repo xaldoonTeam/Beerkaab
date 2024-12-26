@@ -22,10 +22,10 @@ function HomePage() {
             </h2>
             <p className='m-5  TextLoram'>
             Madaddaalo nin weyn iyo
-Maad ma ku tiriyaa!
-Milaygu waa milaygii
-Rag maleeganayoo
-Naago mooska hurdeen!!
+            Maad ma ku tiriyaa!
+            Milaygu waa milaygii
+            Rag maleeganayoo
+            Naago mooska hurdeen!!
             </p>
             <button className='btnh bg-green-700 text-white text-center m-4 font-semibold p-4 rounded-lg hover:bg-[#e81383] hover:text-white'>
               Shop Now
