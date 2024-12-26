@@ -19,7 +19,7 @@ const Router =()=>{
            <Navbars/>
         {/* <Header/> */}
     </div>
-    <div>
+    <div className='mb-20'>
         <Outlet/>
     </div>
     <div>footer</div>
