@@ -1,98 +1,95 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+"use client"
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import * as React from "react"
+import {Link} from "react-router-dom"
+import { Menu, X } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
-  const menuItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/About" },
-    {
-      name: "Services",
-      href: "#",
-      dropdown: [
-        { name: "Web Development", href: "#" },
-        { name: "App Development", href: "#" },
-        { name: "UI/UX Design", href: "#" },
-      ],
-    },
-    { name: "Contact", href: "/Contact" },
-  ];
+const navItems = [
+  { to: "/", label: "HOME" },
+  { to: "/About", label: "About" },
+  { to: "/products", label: "Qalbka" },
+  { to: "/contact", label: "CONTACT US" },
+]
+
+ function Navbar() {
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <nav className="bg-green-800 text-white">
-      {/* Top Section */}
-      <div className="container mx-auto flex items-center justify-between px-4 py-2 border-b border-green-700">
-        <div className="flex items-center space-x-4">
-          <FontAwesomeIcon icon={faFacebook} className="hover:text-black" />
-          <FontAwesomeIcon icon={faTwitter} className="hover:text-black" />
-          <FontAwesomeIcon icon={faInstagram} className=" hover:text-black" />
+    <nav className="border-b-4 border-green-800 shadow-xl fixed z-50 w-full bg-[#EEF3EB]">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6 h-20">
+        {/* Logo Section */}
+        <Link to="/" className="flex items-center space-x-3">
+          <img
+            src="/logo.png"
+            alt="BeerKaab Logo"
+            className="h-40 w-auto"
+          />
+        </Link>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex lg:items-center ">
+          <ul className="flex space-x-10 lg:mr-80 ">
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <Link 
+                  to={item.to}
+                  className="text-green-800 hover:text-green-600 transition font-medium"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Button variant="ghost" className="text-green-800 hover:text-green-600 font-semibold text-xl">
+            LOGIN
+          </Button>
         </div>
-        <p className="text-sm">Free Shipping on orders over $50!</p>
-      </div>
 
-      {/* Main Navigation */}
-      <div className="container mx-auto flex items-center justify-between px-4 py-0">
-        {/* Logo */}
-        <a href="/" className="text-2xl font-bold hover:text-gray-300">
-          BrandLogo
-        </a>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="block md:hidden text-gray-400 hover:text-gray-200"
+        {/* Mobile Menu */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen} >
+  <SheetTrigger asChild >
+    <Button
+      variant="ghost"
+      className="lg:hidden text-green-800 hover:bg-green-100  rounded-md p-2 transition"
+      aria-label="Toggle menu"
+    >
+      <Menu className="h-6 w-6" />
+    </Button>
+  </SheetTrigger>
+  <SheetContent
+    side="right"
+    className="w-[300px] sm:w-[400px] bg-[#EEF3EB] shadow-lg border-l border-gray-200 animate-slide-in duration-300"
+  >
+    <nav className="flex flex-col gap-6 p-6">
+      {navItems.map((item) => (
+        <Link
+          key={item.to}
+          to={item.to}
+          className="text-green-800  hover:text-green-600 transition font-medium block  text-base border-b border-transparent hover:border-green-600"
+          onClick={() => setIsOpen(false)}
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+          {item.label}
+        </Link>
+      ))}
+      <Button
+        variant="ghost"
+        className="text-green-800 -ml-4 hover:text-green-600 hover:bg-green-100 rounded-md font-semibold text-based justify-start px-4 py-2 transition"
+      >
+        LOGIN
+      </Button>
+    </nav>
+  </SheetContent>
+</Sheet>
 
-        {/* Links */}
-        <ul
-          className={`${
-            isMenuOpen ? "block" : "hidden"
-          } md:flex items-center space-y-4 md:space-y-0 md:space-x-8 absolute md:static top-16 md:top-auto left-0 right-0 md:bg-transparent bg-green-800 px-4 py-4 md:px-0 z-50`}
-        >
-          {menuItems.map((item, index) => (
-            <li key={index} className="relative group">
-              <a
-                href={item.href}
-                className="block text-white px-4 py-2 hover:text-gray-300"
-              >
-                {item.name}
-              </a>
-              {item.dropdown && (
-                <div className="absolute hidden group-hover:block bg-gray-700 text-sm mt-2 rounded shadow-lg">
-                  {item.dropdown.map((dropdownItem, idx) => (
-                    <a
-                      key={idx}
-                      href={dropdownItem.href}
-                      className="block px-4 py-2 hover:bg-gray-600"
-                    >
-                      {dropdownItem.name}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

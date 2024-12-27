@@ -5,6 +5,19 @@ import Navbars from './components/ui/nav'
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Footer from './pages/Footer';
+import DhashRoute from './Dashboard/DhashRoute';
+// import Dashhome from './Dashboard/Dashhome';
+import Notfound from './Dashboard/Notfound';
+import Allproducts from './pages/Allproducts'
+import Dalboadeeg from './pages/dalboadeeg'
+import Order from './pages/order'
+import Companyes from './pages/companys'
+import Ordesevice from './pages/Ordeservice'
+
+
+import Reports from './Dashboard/Reports';
+
+
 
 const Router =()=>{
   // const search =(query)=>{
@@ -15,12 +28,12 @@ const Router =()=>{
         <div className=" ">
             {/* <Head/> */}
         </div>
-    <div className="  ">
+    <div className=" static z-50">
       {/* <Search  /> */}
            <Navbars/>
         {/* <Header/> */}
     </div>
-    <div>
+    <div className='  '>
         <Outlet/>
     </div>
     <div className=''><Footer/></div>
@@ -80,104 +93,170 @@ export const router= createBrowserRouter([
               {
                 path:'about',
                 element:<About/>
-              }
+              },
+              {
+                path:'products',
+                element:<Allproducts/>
+              },
+              {
+                path:'Dalboadeeg',
+                element:<Dalboadeeg/>
+              },
+              {
+                path:'Orderpage',
+                element:<Order/>
+              },
+              {
+                path:'Companyes',
+                element:<Companyes/>
+              },
+              {
+                path:'Ordesevice',
+                element:<Ordesevice/>
+              },
+            
 
         ]
     },
    
-//   {
-//     path: '/dashboard',
-//     element: <DhashRoute />,
-//     children: [
-//       {
-//         index: true,
-//         element: <ECommerce />,
-//       },
-//       {
-//       path:"Ecommerce",
-//        element:<ECommerce/>
-//       },
-      
-//       {
-//         path:'orders',
-//         element: <Orders/>,
-//       },
-//       {
-//         path: 'employees',
-//         element: <Employees/>,
-//       },
-      
-//       {
-//         path: 'products',
-//         element: <Products />,
-//       },
-//       {
-//         path: 'users',
-//         element: <SubCategory />,
-//       },
-//       { path: 'orders', 
-//        element: <Orders />
-//      },
-//      {
-//       path:'Customers',
-//       element:<Customers/>
-//      },
-//      {
-//       path:'calender',
-//       element:<Calender/>
-//      },
-//     //  {
-//     //   path:'Pie',
-//     //   element:<Pie/>
-//     //  },
-//      {
-//       path:'editor',
-//       element:<Editro/>
-//      },
-//      {
-//       path:'Categories/category/Create',
-//       element:<CreateCategory/>
-//      },
-//      {
-//       path:'Product/new',
-//       element:<CreateProduct/>
-//      },
-//      {
-//       path:"kanban",
-//       element:<Kanban/>
-//      },
-//      {
-//       path:'area',
-//       element:<Area/>
-//     },
-//      {
-//       path:'Linchart',
-//       element: <LinChart/>
-//      },
-//      {
-//       path:'Categories',
-//       element:<Category/>
-//      },
-//      {
-//         path:'*',
-//         element: <NotFoundd/>
-//     },
-//     {
-//      path:"Recycle",
-//      element:<Recycle/>
-//     },
-//     {
-//       path:'Category/update/:catId',
-//       element:<UpdateCategory/>
-//     },
-//     {
-//       path:'product/update/:productID',
-//       element:<UpdateProduct/>
-//     },
-//     {
-//       path:'Shipping/:orderId',
-//       element:<ShippingO/>
-//     }
-//     ],
-//   },
+    {
+      path:'Dashboard',
+      element:<DhashRoute/>,
+      children:[
+        {
+          index:true,
+          element:<Reports/>
+        },
+        {
+          path:"Home",
+          element:<Reports/>
+        },
+        {
+          path:'*',
+          element:<Notfound/>
+        },
+        {
+          path:"Vendor",
+          // element:<Vendor/>
+        },
+        {
+
+          // path:"User",
+          // element:<Register/>
+        },
+        {
+          // path:"Vendor/CreateVendor",
+          // element:<SheetCreateV/>
+        },
+        {
+          // path:"Products",
+          // element:<Products/>
+        },
+        {
+          path:"Products/Expenses",
+          // element:<AllExpenses/>
+        },
+        {
+          path:"Products/Expenses/Create",
+          // element:<CreateExpenses/>
+        },
+        {
+          path:"Products/Expenses/Update/:expense_id",
+          // element:<UpdateExpenses/>
+        },
+        {
+          // path:"Products/Create",
+          // element:<ProductCreate/>
+        },
+        {
+          path:"Purchases",
+          // element:<CreatePurchase/>
+        },
+        {
+          path:"Sales",
+          // element:<SAlesCreate/>
+        },
+        {
+          // path:"Sales/CreateCustomer",
+          // element:<CreateCustomer/>
+        },
+        {
+          path:"Payables",
+          // element:<Payables/>
+        },
+        {
+          path:"Payables/payment/:purchase_id",
+          // element:<Payment/>
+        },
+        {
+          path:"TopSales",
+          // element:<TopSale/>
+        },
+        {
+          path:"Reports",
+          element:<Reports/>
+        },
+        {
+          path:"Reports/SaleReport",
+          // element:<SaleReports/>
+        },
+        {
+          // path:"Reports/ExpensesReport",
+          // element:<ExpensesReport/>
+        },
+        {
+          path:"Reports/PurchasesReport",
+          // element:<PurchaseReport/>
+        },
+        {
+          path:"Reports/Income",
+          // element:<ProfitOr/>
+        },
+        {
+          path:"Receipt",
+          // element:<Recipt/>
+        },
+        {
+          path:"Vendor/Update/:vendor_id",
+          // element:<UpdateVendors/>
+        },
+        {
+          // path:"Products/Update/:product_id",
+          // element:<ProductUpdate/>
+        },
+        {
+          path:"Receiveable",
+          // element:<RecieveAble/>
+        },
+        {
+          path:"Receiveable/RecieveAblepayment/:sale_id",
+          // element:<ReceivePayment/>
+        },
+        {
+          path:"Employees",
+          // element:<AllEmoloye/>
+        },
+        {
+          path:"Employees/New",
+        //   element:<CreateEmployees/>
+        },
+        {
+          path:"Employees/update/:employee_id",
+          // element:<UpdateEmployee/>
+        },
+        {
+          path:"Employees/salaries",
+          // element:<Allsalary/>
+        },
+        {
+          path:"Employees/salaries/newSalry",
+          // element:<CreateSalary/>
+        },
+        {
+          path:"Employees/salaries/update/:employee_id",
+          // element:<UpdateSalary/>
+        }
+
+      ]
+    }
  ])
