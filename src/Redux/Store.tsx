@@ -31,7 +31,7 @@ import { UpdateExpensesSlice } from './Slice/expenses/UpdateExpensesSLice';
 import { GetOneExpenseSlice } from './Slice/expenses/GetOneExpenses';
 import { GetOneCompanySlice } from './Slice/GetOneCompanaySlice';
 
-
+ 
 export const store =configureStore({
 reducer:{
     user:registerSlice.reducer,

@@ -15,6 +15,7 @@ import Companyes from './pages/companys'
 import Ordesevice from './pages/Ordeservice'
 
 import Reports from './Dashboard/Reports';
+import Register from './Dashboard/Register';
 
 
 
@@ -181,8 +182,8 @@ export const router= createBrowserRouter([
           // element:<CreateCustomer/>
         },
         {
-          path:"Payables",
-          // element:<Payables/>
+          path:"User",
+          element:<Register/>
         },
         {
           path:"Payables/payment/:purchase_id",

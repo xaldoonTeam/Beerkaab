@@ -1,7 +1,7 @@
 import { createSlice ,createAsyncThunk } from "@reduxjs/toolkit";
 import axiso ,{AxiosError} from 'axios'
-import { Url, errorMsg, userRegisterInterface} from "../../Interfaces";
-import { json, renderMatches } from "react-router-dom";
+import { Url, errorMsg, userRegisterInterface} from "../../interfaces";
+
 import { act } from "react-dom/test-utils";
 import axios from "axios";
 
@@ -35,7 +35,7 @@ export const RegisterFn= createAsyncThunk(
     async(data:userRegisterInterface,{rejectWithValue})=>{
         try {
             const res= await axios.post(
-         `${Url}/auth/signup`,
+         `${Url}/user/create`,
                 data
             );
             localStorage.setItem('user',JSON.stringify(res.data));

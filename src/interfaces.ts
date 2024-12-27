@@ -7,4 +7,4 @@ export interface userRegisterInterface {
   }
   
   export const errorMsg = 'Uh sorry the server is Down.';
-  export const Url = 'http://localhost:8080/api';
+  export const Url = 'http://localhost:3000';
