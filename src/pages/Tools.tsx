@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-
+import {Link} from "react-router-dom"
 export default function ToolsPage() {
   const tools = [
     {
@@ -15,14 +15,14 @@ export default function ToolsPage() {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvkvOvoL2Hrmq6gfrp4w-4pxijGNi6UMMUXXBMLxJ-XzNbUYmraUX9CO4OugtafRScAk&usqp=CAU",
       title: "CAGAf",
       price: "$100.5",
-      action: "Read More",
+      action: "Kirayso",
     },
     {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAvkvOvoL2Hrmq6gfrp4w-4pxijGNi6UMMUXXBMLxJ-XzNbUYmraUX9CO4OugtafRScAk&usqp=CAU",
       title: "CAGAf",
       price: "$100.5",
-      action: "Read More",
+      action: "Kirayso",
     },
     {
       image:
@@ -34,7 +34,7 @@ export default function ToolsPage() {
   ];
 
   return (
-    <div className="bg-[#f5f7f3]">
+    <div className="bg-[#EEF3EB] -mt-10">
       <div className="max-w-7xl mx-auto py-8  m-auto w-[90%]">
         {/* Tools Section */}
         <section className="mb-16">
@@ -60,12 +60,13 @@ export default function ToolsPage() {
                 <p className="text-green-600 font-semibold text-center mb-4">
                   {tool.price}
                 </p>
+                <Link to="/products">
                 <Button
                   variant="default"
                   className="mt-4 bg-green-800 rounded-full"
                 >
                   {tool.action}
-                </Button>
+                </Button></Link>
               </div>
             ))}
           </div>

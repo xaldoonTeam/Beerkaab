@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import animationData1 from "../../public/animationData1.json";
-import animationData2 from "../../public/farmergreen.json";
-import animationData3 from "../../public/animation_lmi2b8gl.json";
+import {Link} from'react-router-dom'
+import { Button } from '@/components/ui/button';
 import bglottie2 from "../../public/ending trip.json";
 import bglottie5 from "../../public/animationdata5.json";
 import Categories from './Ctegory';
-import Tools from './Tools'
-import Services from './Services'
+import Tools from './Tools';
+import Services from './Services';
 import Blog from './Blog'
 const HomePage = () => {
   const [currentAnimationIndex, setCurrentAnimationIndex] = useState(0);
@@ -27,7 +27,7 @@ const HomePage = () => {
      
 
       {/* Main Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-[90%] mx-auto gap-8 mt-20 ">
+      <div className="flex flex-col md:flex-row  items-center justify-between w-[90%] mx-auto gap-8 mt-20 ">
         {/* Text Section */}
         <div className=" text-center md:text-left md:ml-20 mt-6">
   <p className=" text-sm md:text-xl font-medium text-black-600 uppercase ">
@@ -36,12 +36,20 @@ const HomePage = () => {
   <h1 className=" text-2xl md:text-7xl  font-extrabold mb-4 leading-tight text-green-800">
     BEERKAAB
   </h1>
-  <p className="text-lg font-medium mb-6 text-gray-700">
+  <p className="text-lg font-medium mb-6 text-gray-700  ">
     Ku xidhnow xalalka ugu wanaagsan ee beeraleyda <br/>  iyo khubarada beerta. 
     Ujeedadayadu waa in aan fududeyno <br/> wada shaqeynta iyo horumarinta tacabkaaga.
   </p>
-  <button className="px-8 py-3 bg-green text-white font-semibold text-xl bg-green-900 rounded-full hover:bg-green-700 transition-all">
-Dalbo Hadda  </button>
+  <div className='flex flex-col md:flex-row  gap-6'>
+  <Link to='/products'>
+  <Button className="px-8 py-3 bg-green hover:text-white hover:bg-green-900  text-gray-700 font-semibold text-xl bg-[#EEF3EB] transition-all">
+Dalbo agab
+  </Button></Link>
+
+<Link to='/Dalboadeeg'>
+  <Button className="px-8 lg:ml-10 hover:text-white hover:bg-green-900  py-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] transition-all">
+Dalbo Adeeg  
+</Button></Link></div>
 </div>
 
 
@@ -66,7 +74,7 @@ Dalbo Hadda  </button>
     <Tools/>
     <Categories/>
     <Services/>
-    {/* <Blog/> */}
+    <Blog/>
     </>
   );
 };
