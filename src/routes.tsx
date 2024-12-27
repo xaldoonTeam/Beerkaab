@@ -14,7 +14,6 @@ import Order from './pages/order'
 import Companyes from './pages/companys'
 import Ordesevice from './pages/Ordeservice'
 
-
 import Reports from './Dashboard/Reports';
 
 
@@ -114,6 +113,7 @@ export const router= createBrowserRouter([
                 path:'Ordesevice',
                 element:<Ordesevice/>
               },
+             
             
 
         ]
