@@ -79,7 +79,7 @@ export default function ListingPage() {
 
       <div className="flex flex-wrap gap-6">
         {/* Sidebar */}
-        <div className="w-full sm:w-64 shrink-0">
+        <div className="w-full sm:w-64 shrink-0 bg-[#EEF3EB] p-4 rounded-lg">
           <h2 className="font-bold mb-4 text-xl">CATEGORIES:</h2>
           <ul className="space-y-2 text-lg">
             {categories.map((category) => (
@@ -91,7 +91,7 @@ export default function ListingPage() {
                   id={category.id}
                   checked={selectedCategories.includes(category.id)}
                   onCheckedChange={() => toggleCategory(category.id)}
-                  className="bg-[#8B4513] border-[#8B4513] data-[state=checked]:bg-[#8B4513] data-[state=checked]:border-[#8B4513]"
+                  className="bg-[#ffffff] border-[#03390b] data-[state=checked]:bg-[#8B4513] data-[state=checked]:border-[#8B4513]"
                 />
                 <label htmlFor={category.id} className="cursor-pointer">
                   {category.name}
@@ -106,7 +106,7 @@ export default function ListingPage() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="flex flex-wrap sm:flex-nowrap gap-6 bg-[#EEF3EB] p-4 rounded-lg shadow-sm"
+              className="flex flex-wrap sm:flex-nowrap gap-6  p-4 rounded-lg shadow-sm"
             >
               <div className="w-full sm:w-72 h-48 shrink-0">
                 <img

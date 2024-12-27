@@ -13,7 +13,7 @@ import Dalboadeeg from './pages/dalboadeeg'
 import Order from './pages/order'
 import Companyes from './pages/companys'
 import Ordesevice from './pages/Ordeservice'
-
+import OrderSummary from './pages/OrderSummary'
 import Reports from './Dashboard/Reports';
 
 
@@ -112,6 +112,10 @@ export const router= createBrowserRouter([
               {
                 path:'Ordesevice',
                 element:<Ordesevice/>
+              },
+              {
+                path:'OrderSummary',
+                element:<OrderSummary/>
               },
              
             
