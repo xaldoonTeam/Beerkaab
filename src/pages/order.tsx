@@ -34,7 +34,7 @@ const orderItems = [
           {/* Order Summary */}
           <div>
             <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-[#f5f7f3] rounded-lg shadow p-6">
               {orderItems.map((item) => (
                 <div key={item.id} className="flex justify-between py-3">
                   <div>

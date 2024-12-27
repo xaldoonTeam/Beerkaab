@@ -7,6 +7,7 @@ import About from './pages/About';
 import Footer from './pages/Footer';
 import Allproducts from './pages/Allproducts'
 import Dalboadeeg from './pages/dalboadeeg'
+import Order from './pages/order'
 const Router =()=>{
   // const search =(query)=>{
     
@@ -89,6 +90,10 @@ export const router= createBrowserRouter([
               {
                 path:'Dalboadeeg',
                 element:<Dalboadeeg/>
+              },
+              {
+                path:'Orderpage',
+                element:<Order/>
               },
             
 

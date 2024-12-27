@@ -39,8 +39,11 @@ const HomePage = () => {
     Ku xidhnow xalalka ugu wanaagsan ee beeraleyda <br/>  iyo khubarada beerta. 
     Ujeedadayadu waa in aan fududeyno <br/> wada shaqeynta iyo horumarinta tacabkaaga.
   </p>
-  <button className="px-8 py-3 bg-green text-white font-semibold text-xl bg-[#287509] rounded-full hover:bg-green-700 transition-all">
-Dalbo Hadda  </button>
+  <button className="px-8 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
+Dalbo Qalab  </button>
+
+<button className="px-8 ml-4 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
+Dalbo Adeeg  </button>
 </div>
 
 

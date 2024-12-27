@@ -1,5 +1,5 @@
 "use client"
-
+import {Link} from 'react-router-dom'
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -114,18 +114,18 @@ export default function ListingPage() {
         </div>
 
         {/* Product Listings */}
-        <div className="flex-1">
-          <div className="space-y-6">
+        <div className="flex-1 ">
+          <div className="space-y-6 ">
             {filteredProducts.map((product) => (
               <div 
                 key={product.id}
-                className="flex gap-6 bg-white p-4 rounded-lg shadow-sm"
+                className="flex gap-6 bg-[#EEF3EB] p-4 rounded-lg shadow-sm"
               >
                 <div className="w-72 h-48 shrink-0">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-cover rounded-lg"
+                    className="w-full h-full object-cover rounded-lg shadow-lg"
                   />
                 </div>
                 <div className="flex-1">
@@ -136,9 +136,11 @@ export default function ListingPage() {
                     <p className="text-red-500">${product.weeklyPrice} Weekly</p>
                     <p className="text-red-500">${product.monthlyPrice} Monthly</p>
                   </div>
-                  <Button className="bg-[#2B5F0F] hover:bg-[#234d0c]">
+                   <Link to="/OrderPage">
+                  <Button  className="bg-[#2B5F0F] hover:bg-[#234d0c]">
                     Kirayso
                   </Button>
+                  </Link>
                 </div>
               </div>
             ))}
