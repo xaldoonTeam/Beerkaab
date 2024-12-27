@@ -3,8 +3,8 @@ import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="bg-[#f5f7f3]">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <footer className="bg-[#EAF1E1] ">
+      <div className="max-w-7xl mx-auto px-4 py-12 ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
           <div className=" ">
@@ -80,13 +80,13 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-200 bg-[#e8ede5]">
+      <div className="border-t border-gray-200 bg-[#144700] text-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <p className="text-gray-600 flex items-center gap-2">
-            <span className="inline-block w-4 h-4 rounded-full border border-gray-400" />
+          <p className="text-white flex items-center gap-2">
+            <span className=" inline-block w-4 h-4 rounded-full border border-gray-400" />
             copyright 2024
           </p>
-          <p className="text-gray-600 flex items-center gap-2">
+          <p className="text-white flex items-center gap-2">
             <span className="inline-block w-4 h-4 rounded-full border border-gray-400" />
             call center
           </p>

@@ -35,7 +35,7 @@ export default function ToolsPage() {
   ];
 
   return (
-    <div className="bg-[#f5f7f3]">
+    <div className="bg-[#EEF3EB]">
     <div className="max-w-7xl mx-auto py-8 ">
       {/* Tools Section */}
       <section className="mb-16">

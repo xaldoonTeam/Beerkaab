@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import animationData1 from "../../public/animationData1.json";
-import animationData2 from "../../public/farmergreen.json";
-import animationData3 from "../../public/animation_lmi2b8gl.json";
+
 import bglottie2 from "../../public/ending trip.json";
 import bglottie5 from "../../public/animationdata5.json";
 import Categories from './Ctegory';
-import Tools from './Tools'
-import Services from './Services'
+import Tools from './Tools';
+import Services from './Services';
 import Blog from './Blog'
 const HomePage = () => {
   const [currentAnimationIndex, setCurrentAnimationIndex] = useState(0);
@@ -33,14 +32,14 @@ const HomePage = () => {
   <p className="text-xl font-medium text-black-600 uppercase ">
     Ku soo dhowow
   </p>
-  <h1 className="text-7xl  font-extrabold mb-4 leading-tight text-green-800">
+  <h1 className="text-7xl  font-extrabold mb-4 leading-tight text-[#287509]">
     BEERKAAB
   </h1>
   <p className="text-lg font-medium mb-6 text-gray-700">
     Ku xidhnow xalalka ugu wanaagsan ee beeraleyda <br/>  iyo khubarada beerta. 
     Ujeedadayadu waa in aan fududeyno <br/> wada shaqeynta iyo horumarinta tacabkaaga.
   </p>
-  <button className="px-8 py-3 bg-green text-white font-semibold text-xl bg-green-900 rounded-full hover:bg-green-700 transition-all">
+  <button className="px-8 py-3 bg-green text-white font-semibold text-xl bg-[#287509] rounded-full hover:bg-green-700 transition-all">
 Dalbo Hadda  </button>
 </div>
 
@@ -66,7 +65,8 @@ Dalbo Hadda  </button>
     <Tools/>
     <Categories/>
     <Services/>
-    <Blog/>
+       <div className='mt-20'>
+ <Blog/></div>
     </>
   );
 };

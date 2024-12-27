@@ -33,20 +33,27 @@ const Categories: React.FC = () => {
   ];
 
   return (
-    <div className=" py-10 ">
-      <h2 className="text-center text-2xl font-bold text-green-700 mb-6">CATEGORIES</h2>
-      <div className="flex justify-center gap-40 bg-[#f5f7f3] p-10 ">
+    <div className="py-12 bg-[#f5f7f3]">
+      {/* Heading */}
+      <h2 className="text-center text-3xl font-bold text-green-700 mb-10 uppercase">
+        Categories
+      </h2>
+
+      {/* Categories Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex flex-row items-center gap-2 "
+            className="flex flex-col items-center  rounded-lg shadow-md p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
           >
-            <div className="    bg-green-100 rounded-full flex items-center justify-center">
-              {category.icon}
-            </div>
-
-            <p className=" text-2xl font-semibold text-green-700">{category.label}</p>
-        
+            {/* Icon */}
+            <div className="bg-green-100 rounded-full p-4 mb-4 flex items-center justify-center">
+            <img
+                        src="https://s3-alpha-sig.figma.com/img/c6b0/118f/ec3ff6d115f540aee6b23eda5e6e0403?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KZbcCvPuOhRsjk7ZofU32rodJxmwso56wBURHsNWyAktZeuPV7Avew4mMbjGFRy~yU8hAs5riQb5y0V9pcQMx43G1CcWGErvCARC1urK8rDykjhGseiRKC3owM3O4~R5Zh43~ybS7XGm1aQNRGDNRkYPjj~PH~gGF547VAIsAvnCYYQpVJUwLiqHfAelJKnmgOBJLO70GfRf0e43BuK7Yq~rWo9N2lNT~FE3ugZla5RqwH0VSzuZUE4z5XDKRQIONiolSFFdXiKPpvcxZmSW9morqX7TDajzx0ygbL~GznrAyoZ7HBKPEJWh150K0W-GubK9wqb8oL3zelItEqnrnQ__"
+                        alt="Blog post image"
+                        className="w-20 h-20 object-cover"
+                      />    </div>        {/* Label */}
+            <p className="text-xl font-semibold text-green-700">{category.label}</p>
           </div>
         ))}
       </div>

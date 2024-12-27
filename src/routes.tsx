@@ -5,6 +5,8 @@ import Navbars from './components/ui/nav'
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Footer from './pages/Footer';
+import Allproducts from './pages/Allproducts'
+import Dalboadeeg from './pages/dalboadeeg'
 const Router =()=>{
   // const search =(query)=>{
     
@@ -79,6 +81,14 @@ export const router= createBrowserRouter([
               {
                 path:'about',
                 element:<About/>
+              },
+              {
+                path:'products',
+                element:<Allproducts/>
+              },
+              {
+                path:'Dalboadeeg',
+                element:<Dalboadeeg/>
               },
             
 
