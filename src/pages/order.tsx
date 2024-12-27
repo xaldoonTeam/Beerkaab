@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Separator } from "@/components/ui/separator"
+import {Link} from "react-router-dom"
 import { 
   Select,
   SelectContent,
@@ -32,33 +33,7 @@ const orderItems = [
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Order Summary */}
-          <div>
-            <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
-            <div className="bg-[#f5f7f3] rounded-lg shadow p-6">
-              {orderItems.map((item) => (
-                <div key={item.id} className="flex justify-between py-3">
-                  <div>
-                    <p className="font-medium">{item.name}</p>
-                    <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
-                  </div>
-                  <p className="font-medium">${item.price * item.quantity}</p>
-                </div>
-              ))}
-              <Separator className="my-4" />
-              <div className="flex justify-between py-2">
-                <p>Subtotal</p>
-                <p className="font-medium">${subtotal}</p>
-              </div>
-              <div className="flex justify-between py-2">
-                <p>Tax</p>
-                <p className="font-medium">${tax.toFixed(2)}</p>
-              </div>
-              <div className="flex justify-between py-2 text-lg font-semibold">
-                <p>Total</p>
-                <p>${total.toFixed(2)}</p>
-              </div>
-            </div>
-          </div>
+         
 
           {/* Order Form */}
           <div>
@@ -98,27 +73,11 @@ const orderItems = [
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label>Payment Method</Label>
-                <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="credit-card" id="credit-card" />
-                    <Label htmlFor="credit-card">Credit Card</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="paypal" id="paypal" />
-                    <Label htmlFor="paypal">PayPal</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="bank-transfer" id="bank-transfer" />
-                    <Label htmlFor="bank-transfer">Bank Transfer</Label>
-                  </div>
-                </RadioGroup>
-              </div>
+             <Link to="/OrderSummary">
 
               <Button type="submit" className="w-full bg-[#2B5F0F] hover:bg-[#234d0c] text-white">
                 Place Order
-              </Button>
+              </Button></Link>
             </form>
           </div>
         </div>
