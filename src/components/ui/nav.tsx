@@ -19,9 +19,9 @@ const Navbar: React.FC = () => {
             <li className="hover:text-green-600 transition">
               <a href="/">HOME</a>
             </li>
-            <li className="hover:text-green-600 transition">
+            {/* <li className="hover:text-green-600 transition">
               <a href="/organizations">Organization</a>
-            </li>
+            </li> */}
             <li className="hover:text-green-600 transition">
               <a href="/About">About</a>
             </li>

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import animationData1 from "../../public/animationData1.json";
-
+import {Link} from'react-router-dom'
+import { Button } from '@/components/ui/button';
 import bglottie2 from "../../public/ending trip.json";
 import bglottie5 from "../../public/animationdata5.json";
 import Categories from './Ctegory';
@@ -39,11 +40,14 @@ const HomePage = () => {
     Ku xidhnow xalalka ugu wanaagsan ee beeraleyda <br/>  iyo khubarada beerta. 
     Ujeedadayadu waa in aan fududeyno <br/> wada shaqeynta iyo horumarinta tacabkaaga.
   </p>
-  <button className="px-8 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
-Dalbo Qalab  </button>
+  <Link to='/products'>
+  <Button className="px-8 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
+Dalbo Qalab  </Button></Link>
 
-<button className="px-8 ml-4 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
-Dalbo Adeeg  </button>
+<Link to='/Dalboadeeg'>
+
+<Button className="px-8 ml-4 py-2 mt-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] rounded-full hover:bg-green-700 transition-all">
+Dalbo Adeeg  </Button></Link>
 </div>
 
 

@@ -8,6 +8,8 @@ import Footer from './pages/Footer';
 import Allproducts from './pages/Allproducts'
 import Dalboadeeg from './pages/dalboadeeg'
 import Order from './pages/order'
+import Companyes from './pages/companys'
+import Ordesevice from './pages/Ordeservice'
 const Router =()=>{
   // const search =(query)=>{
     
@@ -94,6 +96,14 @@ export const router= createBrowserRouter([
               {
                 path:'Orderpage',
                 element:<Order/>
+              },
+              {
+                path:'Companyes',
+                element:<Companyes/>
+              },
+              {
+                path:'Ordesevice',
+                element:<Ordesevice/>
               },
             
 

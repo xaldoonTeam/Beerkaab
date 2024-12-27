@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-
+import {Link} from 'react-router-dom'
+import { 
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
  function ServiceRequest() {
   return (
     <div className="min-h-screen bg-black/60 relative flex items-center">
@@ -36,6 +43,16 @@ Hadii aad u baahntahay adeeg lagu qabto, waxaad si degdeg ah u soo gudbin kartaa
                   placeholder="Number kaaga Gali" 
                   className="bg-gray-50"
                 />
+                <Select>
+  <SelectTrigger className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500">
+    <SelectValue placeholder="Xulo adeega lagu qabanayo" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="repair">Dayactir</SelectItem>
+    <SelectItem value="maintenance">Daryeel</SelectItem>
+    <SelectItem value="installation">Rakibid</SelectItem>
+  </SelectContent>
+</Select>
               </div>
 
               <Textarea 
@@ -55,13 +72,12 @@ Hadii aad u baahntahay adeeg lagu qabto, waxaad si degdeg ah u soo gudbin kartaa
                   className="bg-gray-50"
                 />
               </div>
-
+<Link to="/Companyes">
               <Button 
                 type="submit" 
-                className="w-full bg-[#2B5F0F] hover:bg-[#234d0c] text-white"
+                className="w-full bg-[#2B5F0F] hover:bg-[#234d0c] text-white text-lg font-semibold "
               >
-                End Date
-              </Button>
+Dalbo              </Button></Link>
             </form>
           </div>
         </div>
