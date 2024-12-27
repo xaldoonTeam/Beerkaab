@@ -33,20 +33,18 @@ const Categories: React.FC = () => {
   ];
 
   return (
-    <div className=" py-10 ">
+    <div className="py-10 ">
       <h2 className="text-center text-2xl font-bold text-green-700 mb-6">CATEGORIES</h2>
-      <div className="flex justify-center gap-40 bg-[#f5f7f3] p-10 ">
+      <div className="flex flex-wrap justify-center gap-8 bg-[#f5f7f3] m-auto w-[90%] p-10">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="flex flex-row items-center gap-2 "
+            className="flex flex-col items-center gap-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
           >
-            <div className="    bg-green-100 rounded-full flex items-center justify-center">
+            <div className="bg-green-100 rounded-full flex items-center justify-center p-4">
               {category.icon}
             </div>
-
-            <p className=" text-2xl font-semibold text-green-700">{category.label}</p>
-        
+            <p className="text-2xl font-semibold text-green-700">{category.label}</p>
           </div>
         ))}
       </div>

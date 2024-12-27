@@ -44,7 +44,7 @@ export function BlogSlider() {
           align: "start",
           loop: true,
         }}
-        className="w-full"
+        className="m-auto w-[90%]"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
           {blogs.map((blog, index) => (

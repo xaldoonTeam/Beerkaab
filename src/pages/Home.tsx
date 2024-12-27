@@ -29,11 +29,11 @@ const HomePage = () => {
       {/* Main Section */}
       <div className="flex flex-col md:flex-row items-center justify-between w-[90%] mx-auto gap-8 mt-20 ">
         {/* Text Section */}
-        <div className="md:w-1/2 text-center md:text-left ml-20">
-  <p className="text-xl font-medium text-black-600 uppercase ">
+        <div className=" text-center md:text-left md:ml-20 mt-6">
+  <p className=" text-sm md:text-xl font-medium text-black-600 uppercase ">
     Ku soo dhowow
   </p>
-  <h1 className="text-7xl  font-extrabold mb-4 leading-tight text-green-800">
+  <h1 className=" text-2xl md:text-7xl  font-extrabold mb-4 leading-tight text-green-800">
     BEERKAAB
   </h1>
   <p className="text-lg font-medium mb-6 text-gray-700">
@@ -66,7 +66,7 @@ Dalbo Hadda  </button>
     <Tools/>
     <Categories/>
     <Services/>
-    <Blog/>
+    {/* <Blog/> */}
     </>
   );
 };

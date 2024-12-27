@@ -20,7 +20,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="ml-32">
+          <div className="">
             <h3 className="text-xl font-semibold mb-4  ">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -47,7 +47,7 @@ export function Footer() {
           </div>
 
           {/* Get In Touch */}
-          <div className="ml-32">
+          <div className="">
             <h3 className="text-xl font-semibold mb-4 ">Get In Touch</h3>
             <div className="flex gap-4">
               <Link 
