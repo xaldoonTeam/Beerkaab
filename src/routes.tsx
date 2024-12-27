@@ -8,8 +8,11 @@ import Footer from './pages/Footer';
 import DhashRoute from './Dashboard/DhashRoute';
 // import Dashhome from './Dashboard/Dashhome';
 import Notfound from './Dashboard/Notfound';
-
-
+import Allproducts from './pages/Allproducts'
+import Dalboadeeg from './pages/dalboadeeg'
+import Order from './pages/order'
+import Companyes from './pages/companys'
+import Ordesevice from './pages/Ordeservice'
 
 import Reports from './Dashboard/Reports';
 
@@ -90,6 +93,27 @@ export const router= createBrowserRouter([
                 path:'about',
                 element:<About/>
               },
+              {
+                path:'products',
+                element:<Allproducts/>
+              },
+              {
+                path:'Dalboadeeg',
+                element:<Dalboadeeg/>
+              },
+              {
+                path:'Orderpage',
+                element:<Order/>
+              },
+              {
+                path:'Companyes',
+                element:<Companyes/>
+              },
+              {
+                path:'Ordesevice',
+                element:<Ordesevice/>
+              },
+             
             
 
         ]
