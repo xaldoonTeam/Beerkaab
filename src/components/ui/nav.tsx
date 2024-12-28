@@ -29,6 +29,8 @@ const navItems = [
   { to: "/About", label: "About" },
   { to: "/products", label: "Qalbka" },
   { to: "/contact", label: "CONTACT US" },
+  { to: "/Loginpage", label: "Login" },
+
 ];
 
 // Helper function to get initials from a name
