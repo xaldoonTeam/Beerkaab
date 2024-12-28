@@ -17,7 +17,7 @@ import OrderSummary from './pages/OrderSummary'
 import Reports from './Dashboard/Reports';
 import Login from './pages/Login'
 import SignupForm from './pages/SignupForm'
-
+import Addproducts from './pages/Addproducts'
 const Router =()=>{
   // const search =(query)=>{
     
@@ -125,6 +125,10 @@ export const router= createBrowserRouter([
               {
                 path:'SignupForm',
                 element:<SignupForm/>
+              },
+              {
+                path:'Addproducts',
+                element:<Addproducts/>
               },
 
         ]
