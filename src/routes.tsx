@@ -18,7 +18,9 @@ import Reports from './Dashboard/Reports';
 import Login from './pages/Login'
 import SignupForm from './pages/SignupForm'
 import Register from './Dashboard/Register';
-import Addproducts from './pages/Addproducts'
+import EmployersData from './DashComponents/ui/EmployersData';
+import  Addproducts from './pages/Addproducts'
+
 const Router =()=>{
   // const search =(query)=>{
     
@@ -152,8 +154,8 @@ export const router= createBrowserRouter([
           element:<Notfound/>
         },
         {
-          path:"Vendor",
-          // element:<Vendor/>
+          path:"Teams",
+          element:<EmployersData/>
         },
         {
 

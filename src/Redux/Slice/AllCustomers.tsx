@@ -1,74 +1,74 @@
-import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
-import axios,{AxiosError} from "axios";
-import { Url,errorMsg } from "@/Interfaces";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios, { AxiosError } from "axios";
+import { Url, errorMsg } from "@/interfaces";
 
-interface CustomerDta{
-    customer_id:number
-    customer_name:string
-    customer_address:string
-    customer_phone:string
-    company_id:string
-    created_at:string
-    updated_at:string
+// Define an interface for the user data (matching the server response)
+interface UserData {
+  id: number;
+  username: string;
+  email: string;
+  type: string;
+  role: string;
+  password: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-
-
-
-const initialState ={
-    isLoading: false,
-    isError:false,
-    isSuccess:false,
-    errorMsg:'',
-    data:[] as CustomerDta[],
+// Define the initial state of the slice
+const initialState = {
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  errorMsg: '',
+  data: [] as UserData[],  // Change CustomerDta to UserData to reflect the new structure
 };
-export const getAllCustomerFn= createAsyncThunk(
-    'AllCustomer',
-    async(_,{rejectWithValue})=>{
-        try {
-            const compnay_Id =JSON.parse(localStorage.getItem("userInfo")!).company_id
-            // const token= JSON.parse(localStorage.getItem("userInfo")!).accessToken;
-            const res= await axios.get(`${Url}/customers?company_id=${compnay_Id}`,{
-                // headers: {
-                //     Authorization: `Bearer ${token}`,
-                // },
-              })
 
-              return res.data
-        } catch (error) {
+// Async thunk to fetch all users from the server
+export const getAllUsersFn = createAsyncThunk(
+  'AllUsers',
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`${Url}/user/All`, {
+        // Add headers or token logic if necessary
+        // headers: {
+        //     Authorization: `Bearer ${token}`,
+        // },
+      });
 
-            if (error instanceof AxiosError)
-                return rejectWithValue(error.response?.data.message || errorMsg);
-        
-              return rejectWithValue(errorMsg); 
-            
-        }
+      return res.data;  // Server response is returned as the payload
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        return rejectWithValue(error.response?.data.message || errorMsg);
+      }
+      return rejectWithValue(errorMsg);
     }
-)
+  }
+);
 
-export const GetAllCustomerSlice = createSlice({
-    name:'getallCustomer',
-    reducers:{
-        resetAllCustomer :()=> initialState
-    },
-    initialState,
-    extraReducers(builder){
-        builder.addCase(getAllCustomerFn.pending,()=>({
-            ...initialState,
-            isLoading:true
-        }));
-        builder.addCase(getAllCustomerFn.fulfilled,(_,action)=>({
-            ...initialState,
-            isSuccess:true,
-            data:action.payload,
+// Create slice for managing the user data
+export const getAllUsersSlice = createSlice({
+  name: 'getAllUsers',
+  reducers: {
+    resetAllUsers: () => initialState,  // Reset state to initial state
+  },
+  initialState,
+  extraReducers(builder) {
+    builder.addCase(getAllUsersFn.pending, () => ({
+      ...initialState,
+      isLoading: true,
+    }));
+    builder.addCase(getAllUsersFn.fulfilled, (_, action) => ({
+      ...initialState,
+      isSuccess: true,
+      data: action.payload,  // Save the response data to the state
+    }));
+    builder.addCase(getAllUsersFn.rejected, (_, action) => ({
+      ...initialState,
+      isError: true,
+      errorMsg: String(action.payload),  // Set the error message if request fails
+    }));
+  },
+});
 
-        }));
-        builder.addCase(getAllCustomerFn.rejected,(_,action)=>({
-            ...initialState,
-            isError:true,
-            errorMsg:String(action.payload),
-        }));
-    }
-})
-
-export  const { resetAllCustomer} = GetAllCustomerSlice.actions
+// Export actions from the slice
+export const { resetAllUsers } = getAllUsersSlice.actions;
