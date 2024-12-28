@@ -9,7 +9,7 @@ import { createProductSlice } from './Slice/CreateProductSlice';
 import { CreatePurchaseSlice } from './Slice/CreatePurchhaseSlice';
 import  { createSaleSlice } from './Slice/CreateSaleSlice';
 import { createCustomerSlice } from './Slice/CreateCustomerSlice';
-import { GetAllCustomerSlice } from './Slice/AllCustomers';
+// import { GetAllCustomerSlice, getAllUsersSlice } from './Slice/AllCustomers';
 import { GetAllPurchaseSlice } from './Slice/AllPurchases';
 
 import { delVendorSlice } from './Slice/DeleteVendor';
@@ -30,6 +30,8 @@ import { delExpensesSlice } from './Slice/expenses/DeleteExpensesSlice';
 import { UpdateExpensesSlice } from './Slice/expenses/UpdateExpensesSLice';
 import { GetOneExpenseSlice } from './Slice/expenses/GetOneExpenses';
 import { GetOneCompanySlice } from './Slice/GetOneCompanaySlice';
+import { getAllUsersSlice } from './Slice/AllCustomers';
+import { toolSlice } from './Slice/tools/createToolSlice';
 
  
 export const store =configureStore({
@@ -37,7 +39,7 @@ reducer:{
     user:registerSlice.reducer,
     userInfo: userInfoSlice.reducer,
     LoginStore: LoginSlice.reducer,
-    // AllVendors:GetAllVendorSlice.reducer,
+    AllUsers:getAllUsersSlice.reducer,
     AllProduct:GetAllProductSlice.reducer,
     CreateVendor:createVendorSlice.reducer,
     CreateProduct:createProductSlice.reducer,
@@ -45,7 +47,7 @@ reducer:{
     createSales:createSaleSlice.reducer,
     AllPurchase:GetAllPurchaseSlice.reducer,
     CreateCustomer:createCustomerSlice.reducer,
-    AllCustomer:GetAllCustomerSlice.reducer,
+    // AllCustomer:GetAllCustomerSlice.reducer,
     // UpdateVendor:UpdateVendorSlice.reducer,
     // AllIncome:GetAllIncomeSlice.reducer,
     DelVendor:delVendorSlice.reducer,
@@ -81,9 +83,10 @@ reducer:{
     OneExpense:GetOneExpenseSlice.reducer,
 
     //Companay
-    GetOneCompanay:GetOneCompanySlice.reducer
+    GetOneCompanay:GetOneCompanySlice.reducer,
 
-
+   // tools
+   createTool:toolSlice.reducer
 
 
 },

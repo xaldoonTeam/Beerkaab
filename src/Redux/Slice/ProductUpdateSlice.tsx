@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { Url, errorMsg } from "@/Interfaces";
+import { Url, errorMsg } from "@/interfaces";
 
 export interface UpdateVendorData {
   product_name: string;

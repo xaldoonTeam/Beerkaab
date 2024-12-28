@@ -1,140 +1,122 @@
-import { getAllEmployersFn } from "@/Redux/Slice/Employe/AllEmloyers";
 import { AppDispatch, RootState } from "@/Redux/Store";
 import { Box } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
- 
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { delEmployeeFn, resetDelEmployees } from "@/Redux/Slice/Employe/DeleteEmployesSlice";
+import { getAllUsersFn } from "@/Redux/Slice/AllCustomers";
+import SideParsm from "../SideParsm";
+import Nav from "../Nav";
+// Make sure this import points to the correct slice
 
-
+// Define the columns based on the user data
 const columns: GridColDef[] = [
-    { field: 'employee_id', headerName: 'Id', width: 100 },
-    { field: 'employee_name', headerName: 'Name', width: 200 },
-    { field: 'employee_address', headerName: 'Email', width: 300 },
-    { field: 'employee_phone', headerName: 'Phone number', width: 200 },
-    { field: 'salary_amount', headerName: 'Salary', width: 200 },
-    {
-      field: 'action',
-      headerName: 'Action',
-      width: 100,
-      renderCell: (params) => (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <ActionCell {...params} />
-        </div>
-      ),
+  { field: 'id', headerName: 'Id', width: 50 },
+  { field: 'username', headerName: 'Username', width: 200 },
+  { field: 'email', headerName: 'Email', width: 300 },
+  { field: 'role', headerName: 'Role', width: 100 },
+  {
+    field: 'updatedAt',
+    headerName: 'Updated At',
+    width: 150,
+    renderCell: (params) => {
+      const date = new Date(params.row.updatedAt);
+      const formattedDate = date.toLocaleDateString(); // Format to 'YYYY-MM-DD'
+      return <span>{formattedDate}</span>;
     },
-   
-  ];    
-  
-  
-
-
-  export const ActionCell = (params:any) => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const dispatch = useDispatch<AppDispatch>()
-   
-
-   
-  
-    const handleClick = (event:any) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    const handleDelete = () => {
-      dispatch(delEmployeeFn(params.row.employee_id));
-      dispatch(resetDelEmployees());
-      handleClose();
-    };
-  
-    // const GetOneVendorHandle = () => {
-    //   dispatch(getOneVendorFn(params.row.vendor_id));
-    //   dispatch(resetOneVendor());
-    //   handleClose();
-    // };
-  
-    return (
-      <div>
-        <MoreVertIcon
-          aria-label="more"
-          aria-controls={open ? 'long-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
-          onClick={handleClick}
-        />
-        <Menu
-          id="long-menu"
-          MenuListProps={{
-            'aria-labelledby': 'long-button',
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: 48 * 4.5,
-              width: '20ch',
-            },
-          }}
-        >
-          <Link to={`/Dashboard/Employees/update/${params.row.employee_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <MenuItem onClick={() => console.log('Update')}>Update</MenuItem>
-          </Link>
-          <MenuItem onClick={handleDelete}>Delete</MenuItem>
-          <MenuItem onClick={() => console.log('More')}>More</MenuItem>
-        </Menu>
+  },
+  {
+    field: 'action',
+    headerName: 'Action',
+    width: 100,
+    renderCell: (params) => (
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <ActionCell {...params} />
       </div>
-    );
+    ),
+  },
+];
+
+const ActionCell = (params: any) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: any) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
+  const handleDelete = () => {
+    toast.success(`User ${params.row.username} deleted.`);
+    handleClose();
   };
-
-
-
-function EmployersData() {
-
-  const navigate = useNavigate();
-  const toastId = "deleteVendor";
- const AllEmployeesState= useSelector((state:RootState)=> state.AllEmployes)
- const dispatch= useDispatch<AppDispatch>()
- useEffect(() => {
-  dispatch(getAllEmployersFn());
-}, [dispatch]);
-
-const DeleteEmplyState= useSelector((state:RootState)=>state.deleteEmployee)
-
-
-
- useEffect(() => {
-  if (DeleteEmplyState.isLoading) toast.loading('Deleting!', { id: toastId });
-  if (DeleteEmplyState.isSuccess) {
-    toast.success('Vendor is deleted.', { id: toastId });
-    navigate('/Dashboard/Employees');
-  }
-  if (DeleteEmplyState.isError) {
-    toast.error(DeleteEmplyState.errorMsg, { id: toastId });
-  }
-  dispatch(resetDelEmployees());
-}, [DeleteEmplyState.isLoading, DeleteEmplyState.isError, DeleteEmplyState.isSuccess, dispatch, navigate]);
 
   return (
     <div>
+      <MoreVertIcon
+        aria-label="more"
+        aria-controls={open ? 'long-menu' : undefined}
+        aria-expanded={open ? 'true' : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+      />
+      <Menu
+        id="long-menu"
+        MenuListProps={{
+          'aria-labelledby': 'long-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            maxHeight: 48 * 4.5,
+            width: '20ch',
+          },
+        }}
+      >
+        <Link to={`/Dashboard/Users/update/${params.row.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <MenuItem onClick={() => console.log('Update')}>Update</MenuItem>
+        </Link>
+        <MenuItem onClick={handleDelete}>Delete</MenuItem>
+        <MenuItem onClick={() => console.log('More')}>More</MenuItem>
+      </Menu>
+    </div>
+  );
+};
 
-      
-   
-          <Box
+function UsersData() {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const users = useSelector((state: RootState) => state.AllUsers.data);
+  const isLoading = useSelector((state: RootState) => state.AllUsers.isLoading);
+  const isError = useSelector((state: RootState) => state.AllUsers.isError);
+  const errorMsg = useSelector((state: RootState) => state.AllUsers.errorMsg);
+
+  useEffect(() => {
+    dispatch(getAllUsersFn());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(errorMsg);
+    }
+  }, [isError, errorMsg]);
+
+  return (
+    <div className=" min-h-screen">
+      <div className='p-3 flex justify-between'>
+      <h1 className='lg:hidden'>
+        <SideParsm />
+      </h1>
+      <div className="navhome p-0 flex w-full justify-end">
+        <Nav />
+      </div>
+    </div>
+    <div className=" bg-white rounded-md overflow-hidden">
+
+    <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -143,7 +125,7 @@ const DeleteEmplyState= useSelector((state:RootState)=>state.deleteEmployee)
     >
       <Box sx={{ flex: 1, width: '98%' }}>
         <DataGrid
-          rows={AllEmployeesState.data.map((employer) => ({ id: employer.employee_id, ...employer }))}
+          rows={users.map((user) => ({ id: user.id, ...user }))}
           columns={columns}
           initialState={{
             pagination: {
@@ -159,9 +141,9 @@ const DeleteEmplyState= useSelector((state:RootState)=>state.deleteEmployee)
         />
       </Box>
     </Box>
-
     </div>
-  )
+    </div>
+  );
 }
 
-export default EmployersData
+export default UsersData;
