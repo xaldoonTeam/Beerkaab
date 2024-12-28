@@ -32,6 +32,7 @@ import { GetOneExpenseSlice } from './Slice/expenses/GetOneExpenses';
 import { GetOneCompanySlice } from './Slice/GetOneCompanaySlice';
 import { getAllUsersSlice } from './Slice/AllCustomers';
 import { toolSlice } from './Slice/tools/createToolSlice';
+import { getAllToolsSlice } from './Slice/tools/Tools';
 
  
 export const store =configureStore({
@@ -86,7 +87,8 @@ reducer:{
     GetOneCompanay:GetOneCompanySlice.reducer,
 
    // tools
-   createTool:toolSlice.reducer
+   createTool:toolSlice.reducer,
+   GetallTools:getAllToolsSlice.reducer
 
 
 },

@@ -19,6 +19,7 @@ import Login from './pages/Login'
 import SignupForm from './pages/SignupForm'
 import Register from './Dashboard/Register';
 import EmployersData from './DashComponents/ui/EmployersData';
+import ToolCreate from './Dashboard/createTool';
 
 const Router =()=>{
   // const search =(query)=>{
@@ -166,8 +167,8 @@ export const router= createBrowserRouter([
           // element:<Products/>
         },
         {
-          path:"Products/Expenses",
-          // element:<AllExpenses/>
+          path:"Tools",
+          element:<ToolCreate/>
         },
         {
           path:"Products/Expenses/Create",
