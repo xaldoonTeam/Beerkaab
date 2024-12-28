@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -12,37 +12,56 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
-// Mock user data
-interface User {
-  name: string;
-  isAuthenticated: boolean;
-}
-
-const user: User = {
-  name: "Najma mohame",
-  isAuthenticated: true, // Toggle to false for unauthenticated state
-};
-
-// Navigation items (unchanged)
-const navItems = [
-  { to: "/", label: "HOME" },
-  { to: "/About", label: "About" },
-  { to: "/products", label: "Qalbka" },
-  { to: "/contact", label: "CONTACT US" },
-  { to: "/Loginpage", label: "Login" },
-
-];
-
 // Helper function to get initials from a name
 const getInitials = (name: string): string => {
-  if (!name) return "NA"; // Return "NA" if no name is provided
-  const parts: string[] = name.split(" ");
-  const initials: string = parts.map((part: string) => part[0]).join("").substring(0, 2);
-  return initials.toUpperCase();
+  if (!name) return "NA";
+  const parts = name.split(" ");
+  return parts.map((part) => part[0]).join("").substring(0, 2).toUpperCase();
 };
 
 function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [userName, setUserName] = React.useState<string | null>(null);
+  const navigate = useNavigate(); // React Router's navigation hook
+
+  // Check authentication status on component mount
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+
+    if (token && storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setIsAuthenticated(true);
+        setUserName(parsedUser.username);
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+        setIsAuthenticated(false);
+        setUserName(null);
+      }
+    } else {
+      setIsAuthenticated(false);
+      setUserName(null);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    // Clear localStorage and update state
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsAuthenticated(false);
+    setUserName(null);
+
+    // Navigate to the home page without refreshing
+    navigate("/");
+  };
+
+  const navItems = [
+    { to: "/", label: "HOME" },
+    { to: "/About", label: "About" },
+    { to: "/products", label: "Qalbka" },
+    { to: "/contact", label: "CONTACT US" },
+  ];
 
   return (
     <nav className="border-b-4 border-green-800 shadow-xl fixed z-50 w-full bg-[#EEF3EB]">
@@ -64,22 +83,18 @@ function Navbar() {
             ))}
           </ul>
 
-          {/* Profile Button */}
-          {user.isAuthenticated ? (
+          {/* Profile or Login Button */}
+          {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-green-800 text-white font-bold"
                 >
-                  {getInitials(user.name)}
+                  {userName ? getInitials(userName) : "NA"}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-48 bg-white border border-gray-200 shadow-lg rounded-md p-2"
-                style={{ width: "12rem" }} // Explicit width to prevent resizing
-              >
+              <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg rounded-md">
                 <DropdownMenuItem asChild>
                   <Link to="/dashboard" className="flex items-center gap-2 text-green-800 hover:text-green-600">
                     Dashboard
@@ -91,21 +106,26 @@ function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/logout" className="flex items-center gap-2 text-green-800 hover:text-green-600">
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left flex items-center gap-2 text-green-800 hover:text-green-600"
+                  >
                     Logout
-                  </Link>
+                  </button>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button variant="ghost" className="text-green-800 hover:text-green-600 font-semibold text-xl">
-              Login
-            </Button>
+            <Link to="/Loginpage">
+              <Button variant="ghost" className="text-green-800 hover:text-green-600 font-semibold text-xl">
+                Login
+              </Button>
+            </Link>
           )}
         </div>
 
         {/* Mobile Menu */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <Sheet>
           <SheetTrigger asChild>
             <Button
               variant="ghost"
@@ -117,7 +137,7 @@ function Navbar() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[300px] sm:w-[400px] bg-[#EEF3EB] shadow-lg border-l border-gray-200 animate-slide-in duration-300"
+            className="w-[300px] sm:w-[400px] bg-[#EEF3EB] shadow-lg border-l border-gray-200"
           >
             <nav className="flex flex-col gap-6 p-6">
               {navItems.map((item) => (
@@ -125,47 +145,17 @@ function Navbar() {
                   key={item.to}
                   to={item.to}
                   className="text-green-800 hover:text-green-600 transition font-medium block text-base border-b border-transparent hover:border-green-600"
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              {user.isAuthenticated ? (
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-green-800 text-white font-bold"
-                    >
-                      {getInitials(user.name)}
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="end"
-                    className="w-48 bg-white border border-gray-200 shadow-lg rounded-md p-2"
-                    style={{ width: "12rem" }} // Explicit width for mobile dropdown
-                  >
-                    <DropdownMenuItem asChild>
-                      <Link to="/dashboard" className="flex items-center gap-2 text-green-800 hover:text-green-600">
-                        Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/rent" className="flex items-center gap-2 text-green-800 hover:text-green-600">
-                        Rent
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/logout" className="flex items-center gap-2 text-green-800 hover:text-green-600">
-                        Logout
-                      </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Button variant="ghost" className="text-green-800 hover:text-green-600 font-semibold text-xl">
-                  Login
-                </Button>
+              {isAuthenticated && (
+                <button
+                  onClick={handleLogout}
+                  className="text-green-800 hover:text-green-600 transition font-medium block text-base"
+                >
+                  Logout
+                </button>
               )}
             </nav>
           </SheetContent>
