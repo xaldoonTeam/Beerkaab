@@ -1,10 +1,9 @@
 export interface userRegisterInterface {
-    full_name: string;
+    username: string;
     email: string;
     password: string;
-    type_id:number
-    company_id: string
+    
   }
   
   export const errorMsg = 'Uh sorry the server is Down.';
-  export const Url = 'http://localhost:8080/api';
+  export const Url = 'http://localhost:3000';

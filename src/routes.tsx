@@ -17,6 +17,7 @@ import OrderSummary from './pages/OrderSummary'
 import Reports from './Dashboard/Reports';
 import Login from './pages/Login'
 import SignupForm from './pages/SignupForm'
+import Register from './Dashboard/Register';
 import Addproducts from './pages/Addproducts'
 const Router =()=>{
   // const search =(query)=>{
@@ -196,8 +197,8 @@ export const router= createBrowserRouter([
           // element:<CreateCustomer/>
         },
         {
-          path:"Payables",
-          // element:<Payables/>
+          path:"User",
+          element:<Register/>
         },
         {
           path:"Payables/payment/:purchase_id",

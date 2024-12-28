@@ -1,18 +1,19 @@
 import { createSlice ,createAsyncThunk } from "@reduxjs/toolkit";
-import axiso ,{AxiosError} from 'axios'
-import { Url, errorMsg, userRegisterInterface} from "../../Interfaces";
-import { json, renderMatches } from "react-router-dom";
+
+import { Url, errorMsg, userRegisterInterface} from "../../interfaces";
+
 import { act } from "react-dom/test-utils";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 
-interface Response{
-    full_name : string
-    email:string
-    password: string
-    type_id:number
+
+// interface Response{
+//     full_name : string
+//     email:string
+//     password: string
+//     type_id:number
    
-}
+// }
 interface stateinterface{
     isLoading:boolean
     isError:boolean
@@ -35,12 +36,12 @@ export const RegisterFn= createAsyncThunk(
     async(data:userRegisterInterface,{rejectWithValue})=>{
         try {
             const res= await axios.post(
-         `${Url}/auth/signup`,
+         `${Url}/user/create`,
                 data
             );
             localStorage.setItem('user',JSON.stringify(res.data));
             console.log(res)
-            // return res.message
+            return res.data
         } catch (error) {
             if(error instanceof AxiosError){
                 return rejectWithValue(error.response?.data.message);
@@ -56,7 +57,7 @@ export const RegisterFn= createAsyncThunk(
 const registerSlice =createSlice({
     name: 'register',
     reducers:{
-        resetRegisterState:()=>{},
+        resetRegisterState:()=>initialState,
     },
     initialState,
     extraReducers:(builder)=>{
