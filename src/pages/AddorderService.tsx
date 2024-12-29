@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import  {Link} from  "react-router-dom";
 
 function OrderPage() {
   const [formData, setFormData] = useState({
@@ -50,17 +51,14 @@ function OrderPage() {
           <div>
             <h2 className="text-2xl font-semibold mb-6">Complete Your Order</h2>
             <form
-              onSubmit={handleSubmit}
               className="bg-white rounded-lg shadow p-6 space-y-6"
             >
               <div className="space-y-2">
                 <Label htmlFor="farmer_name">Farmer Name</Label>
                 <Input
                   id="farmer_name"
-                  value={formData.farmer_name}
-                  onChange={handleInputChange}
                   placeholder="Enter your full farmer name"
-                  required
+                  
                 />
               </div>
 
@@ -69,10 +67,8 @@ function OrderPage() {
                 <Input
                   id="phone"
                   type="tel"
-                  value={formData.phone}
-                  onChange={handleInputChange}
                   placeholder="Enter your phone number"
-                  required
+                  
                 />
               </div>
 
@@ -80,10 +76,8 @@ function OrderPage() {
                 <Label htmlFor="address">Address</Label>
                 <Input
                   id="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
                   placeholder="Enter your address"
-                  required
+                  
                 />
               </div>
 
@@ -94,21 +88,20 @@ function OrderPage() {
                     id="start_date"
                     type="date"
                     value={formData.start_date}
-                    onChange={handleInputChange}
-                    required
+                      
                   />
                 </div> */}
                 
               </div>
 
             
-
+<Link to='/OrderSummary'>
               <Button
                 type="submit"
                 className="w-full bg-[#2B5F0F] hover:bg-[#234d0c] text-white"
               >
                 Place Order
-              </Button>
+              </Button></Link>
             </form>
           </div>
         </div>

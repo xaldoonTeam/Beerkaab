@@ -1,5 +1,5 @@
 "use client";
-
+import {Link} from 'react-router-dom'
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
@@ -50,7 +50,6 @@ function OrderPage() {
           <div>
             <h2 className="text-2xl font-semibold mb-6">Complete Your Order</h2>
             <form
-              onSubmit={handleSubmit}
               className="bg-white rounded-lg shadow p-6 space-y-6"
             >
               <div className="space-y-2">
@@ -58,9 +57,8 @@ function OrderPage() {
                 <Input
                   id="farmer_name"
                   value={formData.farmer_name}
-                  onChange={handleInputChange}
                   placeholder="Enter your full farmer name"
-                  required
+                  
                 />
               </div>
 
@@ -70,9 +68,8 @@ function OrderPage() {
                   id="phone"
                   type="tel"
                   value={formData.phone}
-                  onChange={handleInputChange}
                   placeholder="Enter your phone number"
-                  required
+                  
                 />
               </div>
 
@@ -81,9 +78,8 @@ function OrderPage() {
                 <Input
                   id="address"
                   value={formData.address}
-                  onChange={handleInputChange}
                   placeholder="Enter your address"
-                  required
+                  
                 />
               </div>
 
@@ -94,8 +90,7 @@ function OrderPage() {
                     id="start_date"
                     type="date"
                     value={formData.start_date}
-                    onChange={handleInputChange}
-                    required
+                      
                   />
                 </div>
                 <div className="space-y-2">
@@ -104,20 +99,19 @@ function OrderPage() {
                     id="end_date"
                     type="date"
                     value={formData.end_date}
-                    onChange={handleInputChange}
-                    required
+                      
                   />
                 </div>
               </div>
 
             
-
+<Link to='/OrderSummary'>
               <Button
                 type="submit"
                 className="w-full bg-[#2B5F0F] hover:bg-[#234d0c] text-white"
               >
                 Place Order
-              </Button>
+              </Button></Link>
             </form>
           </div>
         </div>
