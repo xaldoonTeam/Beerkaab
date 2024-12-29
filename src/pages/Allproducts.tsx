@@ -119,9 +119,8 @@ export default function ListingPage() {
                 <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <div className="space-y-1 mb-4">
-                  <p className="text-red-500">${product.dailyPrice} Daily</p>
-                  <p className="text-red-500">${product.weeklyPrice} Weekly</p>
-                  <p className="text-red-500">${product.monthlyPrice} Monthly</p>
+                  <p className="text-green-800">${product.dailyPrice} Daily</p>
+               
                 </div>
                 <Link to="/OrderPage">
                   <Button className="bg-[#2B5F0F] hover:bg-[#234d0c]">

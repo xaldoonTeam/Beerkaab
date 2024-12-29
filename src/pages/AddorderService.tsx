@@ -1,11 +1,12 @@
 "use client";
-import {Link} from 'react-router-dom'
+
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import  {Link} from  "react-router-dom";
 
 function OrderPage() {
   const [formData, setFormData] = useState({
@@ -56,7 +57,6 @@ function OrderPage() {
                 <Label htmlFor="farmer_name">Farmer Name</Label>
                 <Input
                   id="farmer_name"
-                  value={formData.farmer_name}
                   placeholder="Enter your full farmer name"
                   
                 />
@@ -67,7 +67,6 @@ function OrderPage() {
                 <Input
                   id="phone"
                   type="tel"
-                  value={formData.phone}
                   placeholder="Enter your phone number"
                   
                 />
@@ -77,14 +76,13 @@ function OrderPage() {
                 <Label htmlFor="address">Address</Label>
                 <Input
                   id="address"
-                  value={formData.address}
                   placeholder="Enter your address"
                   
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="start_date">Start Date</Label>
                   <Input
                     id="start_date"
@@ -92,16 +90,8 @@ function OrderPage() {
                     value={formData.start_date}
                       
                   />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="end_date">End Date</Label>
-                  <Input
-                    id="end_date"
-                    type="date"
-                    value={formData.end_date}
-                      
-                  />
-                </div>
+                </div> */}
+                
               </div>
 
             
