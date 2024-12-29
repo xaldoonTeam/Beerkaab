@@ -65,12 +65,12 @@ export default function ListingPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <div className="flex mt-20 flex-wrap justify-between items-center mb-8 gap-4">
-        <h1 className="text-2xl font-bold">LISTING ITEMS</h1>
+        <h1 className="text-3xl font-bold text-[#2B5F0F]">LISTING ITEMS</h1>
         <div className="w-full sm:w-auto">
           <Input
             type="search"
             placeholder="Halkan ka Raadso Adeega Aad Rabto"
-            className="bg-gray-100 w-full sm:w-72 "
+            className="bg-gray-100 w-full sm:w-72 rounded-lg shadow-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2B5F0F] focus:border-[#2B5F0F]"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -79,13 +79,13 @@ export default function ListingPage() {
 
       <div className="flex flex-wrap gap-6">
         {/* Sidebar */}
-        <div className="w-full sm:w-64 shrink-0 bg-[#EEF3EB] p-4 rounded-lg">
-          <h2 className="font-bold mb-4 text-xl">CATEGORIES:</h2>
-          <ul className="space-y-2 text-lg">
+        <div className="w-full sm:w-64 shrink-0 bg-[#EEF3EB] p-6 rounded-lg shadow-lg">
+          <h2 className="font-bold text-xl text-[#2B5F0F] mb-6">CATEGORIES</h2>
+          <ul className="space-y-4">
             {categories.map((category) => (
               <li
                 key={category.id}
-                className="flex items-center gap-2 cursor-pointer hover:text-[#2B5F0F]"
+                className="flex items-center gap-2 cursor-pointer hover:text-[#2B5F0F] transition-all duration-300"
               >
                 <Checkbox
                   id={category.id}
@@ -106,25 +106,24 @@ export default function ListingPage() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="flex flex-wrap sm:flex-nowrap gap-6  p-4 rounded-lg shadow-sm"
+              className="flex flex-wrap sm:flex-nowrap gap-6 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="w-full sm:w-72 h-48 shrink-0">
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                  className="w-full h-full object-cover rounded-lg shadow-md"
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                <h3 className="text-2xl font-semibold text-[#2B5F0F] mb-3">{product.title}</h3>
                 <p className="text-gray-600 mb-4">{product.description}</p>
                 <div className="space-y-1 mb-4">
-                  <p className="text-red-500">${product.dailyPrice} Daily</p>
-                  <p className="text-red-500">${product.weeklyPrice} Weekly</p>
-                  <p className="text-red-500">${product.monthlyPrice} Monthly</p>
+                  <p className="text-green-800">${product.dailyPrice} Daily</p>
+                 
                 </div>
                 <Link to="/OrderPage">
-                  <Button className="bg-[#2B5F0F] hover:bg-[#234d0c]">
+                  <Button className="bg-[#2B5F0F] hover:bg-[#234d0c] text-white px-6 py-3 rounded-lg">
                     Kirayso
                   </Button>
                 </Link>

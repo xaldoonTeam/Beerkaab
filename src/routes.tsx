@@ -21,6 +21,7 @@ import Register from './Dashboard/Register';
 import EmployersData from './DashComponents/ui/EmployersData';
 import  Addproducts from './pages/Addproducts'
 import SingleProduct from './pages/SingleProduct'
+import Addorderservice from './pages/AddorderService'
 const Router =()=>{
   // const search =(query)=>{
     
@@ -136,6 +137,10 @@ export const router= createBrowserRouter([
               {
                 path:'SingleProduct',
                 element:<SingleProduct/>
+              },
+              {
+                path:'Addorderservice',
+                element:<Addorderservice/>
               },
 
         ]
