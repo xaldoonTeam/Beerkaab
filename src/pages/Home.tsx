@@ -42,12 +42,12 @@ const HomePage = () => {
   </p>
   <div className='flex flex-col md:flex-row  gap-6'>
   <Link to='/products'>
-  <Button className="px-8 py-3 bg-green hover:text-white hover:bg-green-900  text-gray-700 font-semibold text-xl bg-[#EEF3EB] transition-all">
+  <Button className="px-8 py-3 bg-green hover:text-white hover:bg-green-900  text-white font-semibold text-xl bg-green-800 transition-all">
 Dalbo agab
   </Button></Link>
 
 <Link to='/Dalboadeeg'>
-  <Button className="px-8 lg:ml-10 hover:text-white hover:bg-green-900  py-3 bg-green text-gray-700 font-semibold text-xl bg-[#EEF3EB] transition-all">
+  <Button className="px-8 lg:ml-10 hover:text-white hover:bg-green-900  py-3 bg-green text-gray-700 font-semibold text-xl bg-[#edf5e8] transition-all">
 Dalbo Adeeg  
 </Button></Link></div>
 </div>
