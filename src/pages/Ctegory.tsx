@@ -5,7 +5,7 @@ const Categories: React.FC = () => {
   const categories = [
     {
       icon: <Trees size={36} className="text-green-700" />,
-      label: "Harvesting",
+      label: "Mashiinka Biyaha",
     },
     {
       icon: <Tractor size={36} className="text-green-700" />,
@@ -28,7 +28,7 @@ const Categories: React.FC = () => {
           />
         </svg>
       ),
-      label: "Seed Drill",
+      label: "Makina Beerta",
     },
   ];
 

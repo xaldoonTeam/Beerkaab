@@ -48,9 +48,9 @@ Hadii aad u baahntahay adeeg lagu qabto, waxaad si degdeg ah u soo gudbin kartaa
     <SelectValue placeholder="Xulo adeega lagu qabanayo" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="repair">Dayactir</SelectItem>
-    <SelectItem value="maintenance">Daryeel</SelectItem>
-    <SelectItem value="installation">Rakibid</SelectItem>
+    <SelectItem value="repair">Qodista Dhulka</SelectItem>
+    <SelectItem value="maintenance">Buufinta Cayayanka</SelectItem>
+    <SelectItem value="installation">Diyaarinta Dhulka</SelectItem>
   </SelectContent>
 </Select>
               </div>
@@ -60,7 +60,7 @@ Hadii aad u baahntahay adeeg lagu qabto, waxaad si degdeg ah u soo gudbin kartaa
                 className="min-h-[100px] bg-gray-50"
               />
 
-              <div className="grid grid-cols-2 gap-4">
+              {/* <div className="grid grid-cols-2 gap-4">
                 <Input 
                   type="date"
                   placeholder="Start Date"
@@ -71,7 +71,7 @@ Hadii aad u baahntahay adeeg lagu qabto, waxaad si degdeg ah u soo gudbin kartaa
                   placeholder="End Date"
                   className="bg-gray-50"
                 />
-              </div>
+              </div> */}
 <Link to="/Companyes">
               <Button 
                 type="submit" 

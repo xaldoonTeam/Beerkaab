@@ -71,41 +71,7 @@ function AboutPage() {
         </div>
 
         {/* Team section */}
-        <div className="mt-24">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Our Team
-          </h2>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "Jane Doe", role: "CEO & Founder", image: "/placeholder.svg" },
-              { name: "John Smith", role: "CTO", image: "/placeholder.svg" },
-              { name: "Emily Johnson", role: "Lead Designer", image: "/placeholder.svg" },
-            ].map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <Card className="shadow-lg">
-                  <CardContent className="p-6 text-center">
-                    <motion.img
-                      src={member.image}
-                      alt={member.name}
-                      className="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    />
-                    <h3 className="mt-6 text-lg sm:text-xl font-semibold text-gray-900">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-gray-500">{member.role}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+       
       </main>
     </div>
   );

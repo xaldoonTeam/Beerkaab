@@ -59,7 +59,7 @@ function Navbar() {
   const navItems = [
     { to: "/", label: "HOME" },
     { to: "/About", label: "About" },
-    { to: "/products", label: "Qalbka" },
+    { to: "/products", label: " kiro " },
     { to: "/contact", label: "CONTACT US" },
   ];
 
@@ -101,7 +101,7 @@ function Navbar() {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/rent" className="flex items-center gap-2 text-green-800 hover:text-green-600">
+                  <Link to="/Addproducts" className="flex items-center gap-2 text-green-800 hover:text-green-600">
                     Rent
                   </Link>
                 </DropdownMenuItem>
