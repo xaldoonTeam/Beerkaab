@@ -24,7 +24,7 @@ export const createToolFn = createAsyncThunk(
   "tools/create",
   async (toolData: CreateToolData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/create", toolData, {
+      const response = await axios.post("http://localhost:3000/tool/create", toolData, {
         headers: { "Content-Type": "application/json" },
       });
       return response.data; // Expecting the tool data in the response
