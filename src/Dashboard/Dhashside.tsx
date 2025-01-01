@@ -109,9 +109,9 @@ const DhashSide = () => {
       {activeMenu && (
         <>
           <div className="flex justify-between items-center">
-            <Link to="/Dashboard/Home" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-[20px] font-extrabold tracking-tight dark:text-white  text-slate-900">
-              <span>{GetOneCompanayState.data.company_name}  <span className='text-orange-700'>Beer</span>Kaab </span>
-            </Link>
+              <Link to="/Dashboard/Home" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-[20px] font-extrabold tracking-tight dark:text-white  text-slate-900">
+                <span>{GetOneCompanayState.data.company_name}  <span className='text-orange-700'>Beer</span>Kaab </span>
+              </Link>
             <div content="Menu" position="BottomCenter">
               <button
                 type="button"

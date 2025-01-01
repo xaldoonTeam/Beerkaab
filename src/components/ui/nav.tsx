@@ -59,8 +59,8 @@ function Navbar() {
   const navItems = [
     { to: "/", label: "HOME" },
     { to: "/About", label: "About" },
-    { to: "/products", label: " kiro " },
-    { to: "/contact", label: "CONTACT US" },
+    { to: "/products", label: " Rent Tools " },
+    { to: "/contact", label: "Contact us" },
   ];
 
   return (
@@ -96,7 +96,7 @@ function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg rounded-md">
                 <DropdownMenuItem asChild>
-                  <Link to="/dashboard" className="flex items-center gap-2 text-green-800 hover:text-green-600">
+                  <Link to="http://localhost:5173/dashboard" className="flex items-center gap-2 text-green-800 hover:text-green-600">
                     Dashboard
                   </Link>
                 </DropdownMenuItem>
