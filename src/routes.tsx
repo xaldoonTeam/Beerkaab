@@ -22,6 +22,23 @@ import EmployersData from './DashComponents/ui/EmployersData';
 import  Addproducts from './pages/Addproducts'
 import SingleProduct from './pages/SingleProduct'
 import Addorderservice from './pages/AddorderService'
+import Adeeg from './pages/Adeeg'
+import LayoutDashboard from './components/ui/dashboard/LayoutDashboard'
+import Home from './components/ui/dashboard/Home'
+import Tooslstable from './components/ui/dashboard/Tables/Toolstable'
+import Bookings from './components/ui/dashboard/Tables/Bookings'
+import OrderList from './components/ui/dashboard/Tables/OrderList'
+import CompaniesList from './components/ui/dashboard/Tables/companiesList'
+import UsersList from './components/ui/dashboard/Tables/UsersList'
+import NotificationsList from './components/ui/dashboard/Tables/NotificationsList'
+import Settings from './components/ui/dashboard/Tables/Settings'
+import Addtools from './components/ui/dashboard/Forms/Addtools'
+import Addbooking from './components/ui/dashboard/Forms/Addbooking'
+import Addcompanis from './components/ui/dashboard/Forms/Addcompanis'
+import Addnotification from './components/ui/dashboard/Forms/Addnotification'
+import Addorder from './components/ui/dashboard/Forms/Addorder'
+import Adduser from './components/ui/dashboard/Forms/Adduser'
+
 const Router =()=>{
   // const search =(query)=>{
     
@@ -142,148 +159,215 @@ export const router= createBrowserRouter([
                 path:'Addorderservice',
                 element:<Addorderservice/>
               },
+              {
+                path:"Adeeg",
+                element:<Adeeg/>
+              }
 
         ]
     },
-   
     {
-      path:'Dashboard',
-      element:<DhashRoute/>,
+      path:'/Dashboard',
+      element:<LayoutDashboard/>,
       children:[
         {
           index:true,
-          element:<Reports/>
+          element:<Home/>
         },
         {
-          path:"Home",
-          element:<Reports/>
+          path:"Tooslstable",
+          element:<Tooslstable/>
         },
         {
-          path:'*',
-          element:<Notfound/>
+          path:"Bookings",
+          element:<Bookings/>
         },
         {
-          path:"Teams",
-          element:<EmployersData/>
+          path:"OrderList",
+          element:<OrderList/>
         },
-        {
-
-          // path:"User",
-          // element:<Register/>
-        },
-        {
-          // path:"Vendor/CreateVendor",
-          // element:<SheetCreateV/>
-        },
-        {
-          // path:"Products",
-          // element:<Products/>
-        },
-        {
-          path:"Products/Expenses",
-          // element:<AllExpenses/>
-        },
-        {
-          path:"Products/Expenses/Create",
-          // element:<CreateExpenses/>
-        },
-        {
-          path:"Products/Expenses/Update/:expense_id",
-          // element:<UpdateExpenses/>
-        },
-        {
-          // path:"Products/Create",
-          // element:<ProductCreate/>
-        },
-        {
-          path:"Purchases",
-          // element:<CreatePurchase/>
-        },
-        {
-          path:"Sales",
-          // element:<SAlesCreate/>
-        },
-        {
-          // path:"Sales/CreateCustomer",
-          // element:<CreateCustomer/>
-        },
-        {
-          path:"User",
-          element:<Register/>
-        },
-        {
-          path:"Payables/payment/:purchase_id",
-          // element:<Payment/>
-        },
-        {
-          path:"TopSales",
-          // element:<TopSale/>
-        },
-        {
-          path:"Reports",
-          element:<Reports/>
-        },
-        {
-          path:"Reports/SaleReport",
-          // element:<SaleReports/>
-        },
-        {
-          // path:"Reports/ExpensesReport",
-          // element:<ExpensesReport/>
-        },
-        {
-          path:"Reports/PurchasesReport",
-          // element:<PurchaseReport/>
-        },
-        {
-          path:"Reports/Income",
-          // element:<ProfitOr/>
-        },
-        {
-          path:"Receipt",
-          // element:<Recipt/>
-        },
-        {
-          path:"Vendor/Update/:vendor_id",
-          // element:<UpdateVendors/>
-        },
-        {
-          // path:"Products/Update/:product_id",
-          // element:<ProductUpdate/>
-        },
-        {
-          path:"Receiveable",
-          // element:<RecieveAble/>
-        },
-        {
-          path:"Receiveable/RecieveAblepayment/:sale_id",
-          // element:<ReceivePayment/>
-        },
-        {
-          path:"Employees",
-          // element:<AllEmoloye/>
-        },
-        {
-          path:"Employees/New",
-        //   element:<CreateEmployees/>
-        },
-        {
-          path:"Employees/update/:employee_id",
-          // element:<UpdateEmployee/>
-        },
-        {
-          path:"Employees/salaries",
-          // element:<Allsalary/>
-        },
-        {
-          path:"Employees/salaries/newSalry",
-          // element:<CreateSalary/>
-        },
-        {
-          path:"Employees/salaries/update/:employee_id",
-          // element:<UpdateSalary/>
-        }
+       { 
+        path:"companiesList",
+        element:<CompaniesList/>
+      },
+      {
+        path:"UsersList",
+        element:<UsersList/>
+      },
+      {
+        path:"NotificationsList",
+        element:<NotificationsList/>
+      },
+      {
+        path:"settings",
+        element:<Settings/>
+      },
+      {
+        path:"Addbooking",
+        element:<Addbooking/>
+      },
+      {
+        path:"Adduser",
+        element:<Adduser/>
+      },
+      {
+        path:"Addcompanis",
+        element:<Addcompanis/>
+      },
+      {
+        path:"Addnotification",
+        element:<Addnotification/>
+      },
+      {
+        path:"Addorder",
+        element:<Addorder/>
+      },
+      {
+        path:"Addtools",
+        element:<Addtools/>
+      },
 
       ]
     }
+   
+    // {
+    //   path:'Dashboard',
+    //   element:<DhashRoute/>,
+    //   children:[
+    //     {
+    //       index:true,
+    //       element:<Reports/>
+    //     },
+    //     {
+    //       path:"Home",
+    //       element:<Reports/>
+    //     },
+    //     {
+    //       path:'*',
+    //       element:<Notfound/>
+    //     },
+    //     {
+    //       path:"Teams",
+    //       element:<EmployersData/>
+    //     },
+    //     {
+
+    //       // path:"User",
+    //       // element:<Register/>
+    //     },
+    //     {
+    //       // path:"Vendor/CreateVendor",
+    //       // element:<SheetCreateV/>
+    //     },
+    //     {
+    //       // path:"Products",
+    //       // element:<Products/>
+    //     },
+    //     {
+    //       path:"Products/Expenses",
+    //       // element:<AllExpenses/>
+    //     },
+    //     {
+    //       path:"Products/Expenses/Create",
+    //       // element:<CreateExpenses/>
+    //     },
+    //     {
+    //       path:"Products/Expenses/Update/:expense_id",
+    //       // element:<UpdateExpenses/>
+    //     },
+    //     {
+    //       // path:"Products/Create",
+    //       // element:<ProductCreate/>
+    //     },
+    //     {
+    //       path:"Purchases",
+    //       // element:<CreatePurchase/>
+    //     },
+    //     {
+    //       path:"Sales",
+    //       // element:<SAlesCreate/>
+    //     },
+    //     {
+    //       // path:"Sales/CreateCustomer",
+    //       // element:<CreateCustomer/>
+    //     },
+    //     {
+    //       path:"User",
+    //       element:<Register/>
+    //     },
+    //     {
+    //       path:"Payables/payment/:purchase_id",
+    //       // element:<Payment/>
+    //     },
+    //     {
+    //       path:"TopSales",
+    //       // element:<TopSale/>
+    //     },
+    //     {
+    //       path:"Reports",
+    //       element:<Reports/>
+    //     },
+    //     {
+    //       path:"Reports/SaleReport",
+    //       // element:<SaleReports/>
+    //     },
+    //     {
+    //       // path:"Reports/ExpensesReport",
+    //       // element:<ExpensesReport/>
+    //     },
+    //     {
+    //       path:"Reports/PurchasesReport",
+    //       // element:<PurchaseReport/>
+    //     },
+    //     {
+    //       path:"Reports/Income",
+    //       // element:<ProfitOr/>
+    //     },
+    //     {
+    //       path:"Receipt",
+    //       // element:<Recipt/>
+    //     },
+    //     {
+    //       path:"Vendor/Update/:vendor_id",
+    //       // element:<UpdateVendors/>
+    //     },
+    //     {
+    //       // path:"Products/Update/:product_id",
+    //       // element:<ProductUpdate/>
+    //     },
+    //     {
+    //       path:"Receiveable",
+    //       // element:<RecieveAble/>
+    //     },
+    //     {
+    //       path:"Receiveable/RecieveAblepayment/:sale_id",
+    //       // element:<ReceivePayment/>
+    //     },
+    //     {
+    //       path:"Employees",
+    //       // element:<AllEmoloye/>
+    //     },
+    //     {
+    //       path:"Employees/New",
+    //     //   element:<CreateEmployees/>
+    //     },
+    //     {
+    //       path:"Employees/update/:employee_id",
+    //       // element:<UpdateEmployee/>
+    //     },
+    //     {
+    //       path:"Employees/salaries",
+    //       // element:<Allsalary/>
+    //     },
+    //     {
+    //       path:"Employees/salaries/newSalry",
+    //       // element:<CreateSalary/>
+    //     },
+    //     {
+    //       path:"Employees/salaries/update/:employee_id",
+    //       // element:<UpdateSalary/>
+    //     }
+
+    //   ]
+    // }
  ])

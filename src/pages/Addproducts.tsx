@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { createToolFn } from "@/Redux/Slice/tools/createToolSlice";
+import { createToolsFn } from "@/Redux/Slice/CreateSlice/createProductSlice";  // Use the correct action creator
 import { AppDispatch, RootState } from "@/Redux/Store";
 
 interface UploadedImage {
@@ -25,7 +24,7 @@ export default function CreateToolPage() {
   const [uploadedImage, setUploadedImage] = useState<UploadedImage | null>(null);
 
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoading, isSuccess, isError, errorMsg } = useSelector((state: RootState) => state.createTool);
+  const { isLoading, isSuccess, isError, errorMsg } = useSelector((state: RootState) => state.createTools);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -49,17 +48,18 @@ export default function CreateToolPage() {
       return;
     }
 
-    const toolData = {
+    const toolData =[ {
       name,
       description,
       price,
       location,
       category,
       organization_id: 1, // Replace with your logic
-      image: uploadedImage.url,
-    };
+      image: "uploadedImage.url",
+    }];
 
-    dispatch(createToolFn(toolData));
+    // Dispatch the correct action to create the tool
+    dispatch(createToolsFn(toolData));  // Use the action creator here
   };
 
   return (

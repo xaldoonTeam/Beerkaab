@@ -34,8 +34,8 @@ const blogs = [
 
 function BlogSlider() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-20">
-      <h2 className="text-center text-4xl font-bold text-[#2B5F0F] mb-8">
+    <div className=" mx-auto px-16 mt-24 pb-10">
+      <h2 className="text-center text-4xl font-bold text-[#325E56] mb-8">
         BLOGS
       </h2>
 
