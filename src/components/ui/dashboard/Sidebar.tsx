@@ -58,7 +58,7 @@ function ToolRentalSidebar() {
         <div className="mb-8 px-4 py-4 flex items-center justify-between">
           {isOpen && (
             <div className="text-2xl font-bold">
-              <span className="text-green-700">B</span>EERKAAB
+              <span className="text-[#325E56]">B</span>EERKAAB
             </div>
           )}
           <button

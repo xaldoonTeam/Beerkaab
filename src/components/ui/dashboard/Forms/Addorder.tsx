@@ -158,7 +158,7 @@ function OrderForm() {
           />
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="bg-[#325E56] text-white">
           Create Order
         </Button>
       </form>

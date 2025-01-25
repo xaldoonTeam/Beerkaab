@@ -208,7 +208,7 @@ function AddToolForm() {
               />
             )}
           </div>
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" className="bg-[#325E56] text-white" disabled={isLoading}>
             {isLoading ? "Adding Tool..." : "Add Tool"}
           </Button>
         </form>

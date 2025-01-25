@@ -51,7 +51,7 @@ const UsersTable: React.FC = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-gray-800">Users</h1>
-        <Button variant="outline" className="flex items-center">
+        <Button variant="outline" className="flex items-center bg-[#325E56] text-white">
           <Plus className="w-4 h-4 mr-2" />
           Add User
         </Button>

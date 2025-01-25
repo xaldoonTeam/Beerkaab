@@ -115,7 +115,7 @@ interface NotificationFormData {
           <Switch id="isUrgent" checked={formData.isUrgent} onCheckedChange={handleToggle} />
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="bg-[#325E56] text-white">
           Create Notification
         </Button>
       </form>
