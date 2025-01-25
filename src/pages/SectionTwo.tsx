@@ -8,7 +8,7 @@ const features = [
 
 function AgricultureForm() {
     return (
-        <section className="py-16 px-6 mx-auto">
+        <section className="py-16 lg:px-6 mx-auto">
             <div className="container mx-auto px-4">
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                     {/* Left Content */}

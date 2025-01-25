@@ -10,21 +10,32 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useDispatch, useSelector } from "react-redux";
+import { createToolsFn, resetToolsState } from "../../../../Redux/Slice/CreateSlice/createProductSlice"; // Adjust the import path
 import { Toaster } from "@/components/ui/toaster";
 
 interface FormData {
   name: string;
   description: string;
-  uses: string;
+  price: string;
+  location: string;
+  category: string;
+  image: string;
 }
 
- function AddToolForm() {
+function AddToolForm() {
   const [formData, setFormData] = React.useState<FormData>({
     name: "",
     description: "",
-    uses: "",
+    price: "",
+    location: "",
+    category: "",
+    image: "",
   });
+
   const [errors, setErrors] = React.useState<Partial<FormData>>({});
+  const dispatch = useDispatch();
+  const { isLoading, isError, errorMsg, isSuccess } = useSelector((state: any) => state.createTools);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,6 +47,13 @@ interface FormData {
     }
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+    if (files && files[0]) {
+      setFormData((prev) => ({ ...prev, [name]: URL.createObjectURL(files[0]) }));
+    }
+  };
+
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
     if (formData.name.length < 2) {
@@ -44,8 +62,17 @@ interface FormData {
     if (formData.description.length < 10) {
       newErrors.description = "Description must be at least 10 characters.";
     }
-    if (formData.uses.length < 5) {
-      newErrors.uses = "Uses must be at least 5 characters.";
+    if (formData.price.length < 1) {
+      newErrors.price = "Price is required.";
+    }
+    if (formData.location.length < 1) {
+      newErrors.location = "Location is required.";
+    }
+    if (formData.category.length < 1) {
+      newErrors.category = "Category is required.";
+    }
+    if (!formData.image) {
+      newErrors.image = "Image is required.";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -54,15 +81,39 @@ interface FormData {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log(formData);
-      // Show success message (update based on your Toaster library's usage)
-      alert(`Tool added successfully: ${formData.name}`);
-      setFormData({ name: "", description: "", uses: "" });
+      // Dispatch the async action to create the tool
+      dispatch(createToolsFn([formData])); // Pass the formData as an array here
+      // Dispatch resetToolsState without arguments
+      dispatch(resetToolsState()); // Reset state after submission
     }
   };
+  
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      alert("Tool added successfully!");
+      // Reset form on success
+      setFormData({
+        name: "",
+        description: "",
+        price: "",
+        location: "",
+        category: "",
+        image: "",
+      });
+      dispatch(resetToolsState()); // Reset the state after successful submission
+    }
+  }, [isSuccess, dispatch]);
+
+  React.useEffect(() => {
+    if (isError) {
+      alert(errorMsg || "An error occurred");
+      dispatch(resetToolsState()); // Reset on error as well
+    }
+  }, [isError, errorMsg, dispatch]);
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full max-w-6xl mt-20">
       <CardHeader>
         <CardTitle>Add New Agriculture Tool</CardTitle>
         <CardDescription>
@@ -98,20 +149,67 @@ interface FormData {
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="uses">Uses</Label>
-            <Textarea
-              id="uses"
-              name="uses"
-              placeholder="List the main uses of the tool (comma-separated)"
-              value={formData.uses}
+            <Label htmlFor="price">Price</Label>
+            <Input
+              id="price"
+              name="price"
+              placeholder="Enter the price"
+              type="number"
+              value={formData.price}
               onChange={handleChange}
             />
-            {errors.uses && (
-              <p className="text-sm text-red-500">{errors.uses}</p>
+            {errors.price && (
+              <p className="text-sm text-red-500">{errors.price}</p>
             )}
           </div>
-          <Button type="submit" className="w-full">
-            Add Tool
+          <div className="space-y-2">
+            <Label htmlFor="location">Location</Label>
+            <Input
+              id="location"
+              name="location"
+              placeholder="Enter the location"
+              value={formData.location}
+              onChange={handleChange}
+            />
+            {errors.location && (
+              <p className="text-sm text-red-500">{errors.location}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="category">Category</Label>
+            <Input
+              id="category"
+              name="category"
+              placeholder="Enter the category"
+              value={formData.category}
+              onChange={handleChange}
+            />
+            {errors.category && (
+              <p className="text-sm text-red-500">{errors.category}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="image">Image</Label>
+            <Input
+              id="image"
+              name="image"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+            {errors.image && (
+              <p className="text-sm text-red-500">{errors.image}</p>
+            )}
+            {formData.image && (
+              <img
+                src={formData.image}
+                alt="Preview"
+                className="mt-4 h-32 object-cover"
+              />
+            )}
+          </div>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Adding Tool..." : "Add Tool"}
           </Button>
         </form>
       </CardContent>
@@ -119,4 +217,4 @@ interface FormData {
   );
 }
 
-export default AddToolForm
+export default AddToolForm;

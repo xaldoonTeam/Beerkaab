@@ -26,7 +26,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="relative w-full bg-green-50 flex flex-col items-center justify-center">
+      <div className="relative w-full bg-green-50 flex flex-col items-center justify-center ">
         {/* Pseudo-element for background */}
         <div
           // className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-10"
@@ -36,7 +36,7 @@ const HomePage = () => {
         ></div>
 
         {/* Main Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-[90%] mx-auto gap-8 mt-20">
+        <div className="flex flex-col md:flex-row items-center justify-between w-[90%] mx-auto gap-8 mt-32 lg:mt-20">
           <div className="lg:w-1/2 z-10">
             <h1 className="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight text-[#325E56] ">
               Horumar Waxsoosaar <br /> & Guul Joogto Ah
@@ -46,7 +46,7 @@ const HomePage = () => {
               agab tayo sare oo aad Kiraysan karto kuna habboon dhammaan
               xilliyada. Horumari waxsoosaarkaaga maanta.
             </p>
-            <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-row gap-6">
               <Link to="/products">
                 <Button className="px-8 py-3 hover:text-black rounded-2xl hover:bg-[#448175] text-white font-semibold text-xl bg-[#325E56]  transition-all">
                   Dalbo agab
