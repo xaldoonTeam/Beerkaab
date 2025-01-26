@@ -125,7 +125,7 @@ export default function UserForm() {
           {errors.phone && <p className="text-sm text-red-500">{errors.phone}</p>}
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="bg-[#325E56] text-white">
           Add User
         </Button>
       </form>

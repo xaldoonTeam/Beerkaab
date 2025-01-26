@@ -28,21 +28,17 @@ function LoginPage() {
 
   React.useEffect(() => {
     if (isSuccess && data) {
-      // Save user and token to local storage
       localStorage.setItem("user", JSON.stringify(data.user));
-      localStorage.setItem("token", data.token); // Correct token key
-
-      // Save accountType to local storage
+      localStorage.setItem("token", data.token);
       localStorage.setItem("accountType", data.accountType);
-
       toast.success("Login successful!");
-      navigate("/"); // Adjust the route to your desired path
-      dispatch(reset()); // Reset state after handling success
+      navigate("/Dashboard");
+      dispatch(reset());
     }
 
     if (isError) {
       toast.error(errorMsg || "Login failed. Please try again.");
-      dispatch(reset()); // Reset state after handling error
+      dispatch(reset());
     }
   }, [isSuccess, isError, errorMsg, data, navigate, dispatch]);
 
@@ -87,9 +83,6 @@ function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? <EyeOffIcon className="h-4 w-4" /> : <EyeIcon className="h-4 w-4" />}
-                  <span className="sr-only">
-                    {showPassword ? "Hide password" : "Show password"}
-                  </span>
                 </Button>
               </div>
             </div>

@@ -53,7 +53,7 @@ const CompaniesTable: React.FC = () => {
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-gray-800">Companies</h1>
         <Link to="/Dashboard/Addcompanis">
-        <Button variant="outline" className="flex items-center">
+        <Button variant="outline" className="flex items-center bg-[#325E56] text-white">
           <Plus className="w-4 h-4 mr-2" />
           Add Company
         </Button></Link>

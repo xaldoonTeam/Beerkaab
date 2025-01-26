@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios, { type AxiosError } from "axios";
-
+import axios from "axios";
 import { Url, errorMsg } from "../../../interfaces";
 
 interface UserLoginData {
@@ -14,13 +13,12 @@ interface UserLoginData {
     updatedAt: string;
   };
   token: string;
-  accountType: string
+  accountType: string;
 }
-
 
 interface LoginState {
   data: UserLoginData | null;
-  isloading: boolean;
+  isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
   errorMsg: string;
@@ -28,7 +26,7 @@ interface LoginState {
 
 const initialState: LoginState = {
   data: null,
-  isloading: false,
+  isLoading: false,
   isError: false,
   isSuccess: false,
   errorMsg: "",
@@ -39,9 +37,7 @@ export const LoginFn = createAsyncThunk<UserLoginData, { email: string; password
   async (data, { rejectWithValue }) => {
     try {
       const res = await axios.put(`${Url}/user/login`, data);
-
-     
-      return res.data as UserLoginData; // Ensure the returned data matches the UserLoginData type
+      return res.data as UserLoginData;
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.response?.data?.message || errorMsg);
@@ -56,28 +52,36 @@ export const LoginSlice = createSlice({
   initialState,
   reducers: {
     reset: () => initialState,
+    logout: (state) => {
+      state.data = null;
+      state.isSuccess = false;
+      state.isError = false;
+      state.errorMsg = "";
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      localStorage.removeItem("accountType");
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(LoginFn.pending, (state) => {
-      state.isloading = true;
-      state.isError = false;
-      state.isSuccess = false;
-      state.errorMsg = "";
-    });
-
-    builder.addCase(LoginFn.fulfilled, (state, action: PayloadAction<UserLoginData>) => {
-      state.isloading = false;
-      state.isSuccess = true;
-      state.data = action.payload;
-    });
-
-    builder.addCase(LoginFn.rejected,(_,action)=>({
+    builder
+      .addCase(LoginFn.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+        state.errorMsg = "";
+      })
+      .addCase(LoginFn.fulfilled, (state, action: PayloadAction<UserLoginData>) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.data = action.payload;
+      })
+      .addCase(LoginFn.rejected, (_, action) => ({
         ...initialState,
-        isError:true,
-        errorMsg: String(action.payload)
-       }))
+        isError: true,
+        errorMsg: String(action.payload),
+      }));
   },
 });
 
-export const { reset } = LoginSlice.actions;
+export const { reset, logout } = LoginSlice.actions;
 export default LoginSlice.reducer;
