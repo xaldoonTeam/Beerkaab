@@ -23,6 +23,23 @@ import ToolCreate from './Dashboard/createTool';
 import  Addproducts from './pages/Addproducts'
 import SingleProduct from './pages/SingleProduct'
 import Addorderservice from './pages/AddorderService'
+import Adeeg from './pages/Adeeg'
+import LayoutDashboard from './components/ui/dashboard/LayoutDashboard'
+import Home from './components/ui/dashboard/Home'
+import Tooslstable from './components/ui/dashboard/Tables/Toolstable'
+import Bookings from './components/ui/dashboard/Tables/Bookings'
+import OrderList from './components/ui/dashboard/Tables/OrderList'
+import CompaniesList from './components/ui/dashboard/Tables/companiesList'
+import UsersList from './components/ui/dashboard/Tables/UsersList'
+import NotificationsList from './components/ui/dashboard/Tables/NotificationsList'
+import Settings from './components/ui/dashboard/Tables/Settings'
+import Addtools from './components/ui/dashboard/Forms/Addtools'
+import Addbooking from './components/ui/dashboard/Forms/Addbooking'
+import Addcompanis from './components/ui/dashboard/Forms/Addcompanis'
+import Addnotification from './components/ui/dashboard/Forms/Addnotification'
+import Addorder from './components/ui/dashboard/Forms/Addorder'
+import Adduser from './components/ui/dashboard/Forms/Adduser'
+
 const Router =()=>{
   // const search =(query)=>{
     
@@ -143,21 +160,24 @@ export const router= createBrowserRouter([
                 path:'Addorderservice',
                 element:<Addorderservice/>
               },
+              {
+                path:"Adeeg",
+                element:<Adeeg/>
+              }
 
         ]
     },
-   
     {
-      path:'Dashboard',
-      element:<DhashRoute/>,
+      path:'/Dashboard',
+      element:<LayoutDashboard/>,
       children:[
         {
           index:true,
-          element:<Reports/>
+          element:<Home/>
         },
         {
-          path:"Home",
-          element:<Reports/>
+          path:"Tooslstable",
+          element:<Tooslstable/>
         },
         {
           path:'*',

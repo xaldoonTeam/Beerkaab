@@ -22,22 +22,29 @@ const services = [
       "Adeegga diyaarinta dhulka wuxuu bixiyaa aeeg la xiriira diyaarinta dhulka, iyadoo la adeegsanayo qalab gaar ah si loo hubiyo waxtarka adeegga.",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgkZzuunv-4E1RG8Dx3x0QwrvFKPPZALGSQ&s", // Add your image path here
   },
+
+  {
+    title: "Diyaarinta Dhulka",
+    description:
+      "Adeegga diyaarinta dhulka wuxuu bixiyaa aeeg la xiriira diyaarinta dhulka, iyadoo la adeegsanayo qalab gaar ah si loo hubiyo waxtarka adeegga.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJgkZzuunv-4E1RG8Dx3x0QwrvFKPPZALGSQ&s", // Add your image path here
+  },
 ];
 
 function Services() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-8xl px-20 mx-auto  py-12">
       {/* Heading */}
       <h2 className="text-center text-4xl font-bold text-[#2B5F0F] mb-8">
         ADEEGYADA
       </h2>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {services.map((service, index) => (
           <Card
             key={index}
-            className="bg-[#edf5e8] text-green-900 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-gradient-to-b from-green-50 to-gray-100 py-12 text-green-900 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <CardHeader>
               <CardTitle className="text-xl font-bold">{service.title}</CardTitle>

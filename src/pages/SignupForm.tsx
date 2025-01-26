@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { toast } from "react-toastify";
-import { RegisterFn, resetRegisterState } from "@/Redux/Slice/RegisterSlice";
+import { RegisterFn, resetRegisterState } from "@/Redux/Slice/CreateSlice/LoginSlice";
 import { AppDispatch, RootState } from "@/Redux/Store";
 
 export default function SignupPage() {
