@@ -71,21 +71,21 @@ const Navbar: React.FC = () => {
       {/* Top Bar */}
       <div className="bg-[#325E56] text-white text-xs sm:text-sm py-2">
         <div className="container mx-auto flex flex-wrap justify-center sm:justify-between items-center px-4 gap-2">
-          <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 sm:gap-4">
-            <span className="flex items-center">
-              <MapPin size={14} className="mr-1" /> 123 Anywhere Street, NY
+          <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 sm:gap-4 ">
+            <span className=" items-center lg:flex hidden">
+              <MapPin size={14} className="mr-1 " /> 123 Anywhere Street, NY
+            </span>
+            <span className=" sm:inline lg:flex hidden">|</span>
+            <span className=" items-center lg:flex hidden">
+              <Mail size={14} className="mr-1 lg:flex hidden" /> pagupone@mail.com
             </span>
             <span className="hidden sm:inline">|</span>
-            <span className="flex items-center">
-              <Mail size={14} className="mr-1" /> pagupone@mail.com
-            </span>
-            <span className="hidden sm:inline">|</span>
-            <span className="flex items-center">
+            <span className="flex items-center ">
               <Phone size={14} className="mr-1" /> +1 (333) 000-0000
             </span>
           </div>
           {/* Social Media Icons */}
-          <div className="flex gap-4">
+          <div className=" gap-4 lg:flex hidden">
             <a
               href="https://facebook.com"
               target="_blank"

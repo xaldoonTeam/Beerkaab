@@ -29,8 +29,8 @@ const blogs = [
 
 function BlogSlider() {
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-16 mt-12 sm:mt-24 pb-10">
-      <h2 className="text-center text-3xl sm:text-4xl font-bold text-[#325E56] mb-8">BLOGS</h2>
+    <div className="mx-auto max-w-7xl  sm:px-6  mt-12 sm:mt-24 pb-10">
+      <h2 className="text-center  text-3xl sm:text-4xl font-bold text-[#325E56] mb-8">BLOGS</h2>
 
       <div className="relative">
         {/* Soft Shadow Effects */}

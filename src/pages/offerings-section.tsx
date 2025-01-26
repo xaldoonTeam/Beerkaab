@@ -24,7 +24,7 @@ const offerings = [
 function OfferingsSection() {
   return (
     <section className="py-16 sm:px-4 lg:px-20 bg-gradient-to-b from-white to-gray-100">
-      <div className="container mx-auto ">
+      <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 text-[#325E56]">
           Adeegyada Aanu Bixino
         </h2>
