@@ -21,13 +21,10 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { to: "/", label: "Home" },
-    { to: "/About", label: "About Us" },
-    { to: "/products", label: "Qalab" },
-    { to: "/Adeeg", label: "Adeeg" },
-    { to: "/contact", label: "Contact Us" },
-    { to: "/blog", label: "BLOG" },
-
+    { to: "/", label: "HOME" },
+    { to: "/About", label: "About" },
+    { to: "/products", label: " Rent Tools " },
+    { to: "/contact", label: "Contact us" },
   ];
 
   return (
@@ -97,53 +94,83 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Login/Logout */}
-          <div>
-            {isAuthenticated ? (
-              <Button
-                variant="ghost"
-                className="text-sm text-green-900 hover:text-orange-600"
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            ) : (
-              <Link to="/login">
-                <Button className="text-sm text-white bg-[#325E56]  px-4 py-2 rounded-lg hover:bg-gray-800">
-                  Login
+          {/* Profile or Login Button */}
+          {isAuthenticated ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-green-800 text-white font-bold"
+                >
+                  {userName ? getInitials(userName) : "NA"}
                 </Button>
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" className="lg:hidden">
-                <Menu />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-white p-4">
-              <ul className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <li key={item.to}>
-                    <Link to={item.to} className="text-black">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-                {isAuthenticated && (
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg rounded-md">
+                <DropdownMenuItem asChild>
+                  <Link to="http://localhost:5173/dashboard" className="flex items-center gap-2 text-green-800 hover:text-green-600">
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/Addproducts" className="flex items-center gap-2 text-green-800 hover:text-green-600">
+                    Rent
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <button
                     onClick={handleLogout}
-                    className="text-black text-left"
+                    className="w-full text-left flex items-center gap-2 text-green-800 hover:text-green-600"
                   >
                     Logout
                   </button>
-                )}
-              </ul>
-            </SheetContent>
-          </Sheet>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link to="/Loginpage">
+              <Button variant="ghost" className="text-green-800 hover:text-green-600 font-semibold text-xl">
+                Login
+              </Button>
+            </Link>
+          )}
         </div>
+
+        {/* Mobile Menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              className="lg:hidden text-green-800 hover:bg-green-100 rounded-md p-2 transition"
+              aria-label="Toggle menu"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="w-[300px] sm:w-[400px] bg-[#EEF3EB] shadow-lg border-l border-gray-200"
+          >
+            <nav className="flex flex-col gap-6 p-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="text-green-800 hover:text-green-600 transition font-medium block text-base border-b border-transparent hover:border-green-600"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              {isAuthenticated && (
+                <button
+                  onClick={handleLogout}
+                  className="text-green-800 hover:text-green-600 transition font-medium block text-base"
+                >
+                  Logout
+                </button>
+              )}
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );
