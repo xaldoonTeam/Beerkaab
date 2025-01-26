@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -102,7 +103,7 @@ const Navbar = () => {
                   variant="ghost"
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-green-800 text-white font-bold"
                 >
-                  {userName ? getInitials(userName) : "NA"}
+                  {/* {userName ? getInitials(userName) : "NA"} */} NA
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48 bg-white border border-gray-200 shadow-lg rounded-md">
