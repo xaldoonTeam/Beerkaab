@@ -22,43 +22,29 @@ export const links = [
     {
      
       links: [
+      
         {
-          name: 'Teams' ,
-          // icon: <AiOutlineShoppingCart />,
-          icon:<MdAnalytics />
-        },
-        {
-          name: 'Tools',
-          icon: <AiOutlineProduct/>
+          name: 'Users',
+          icon: <IoPeopleSharp/>
         },
         // {
         //   name:'SubCategory',
         //   icon : <MdCategory/>
         // },
         {
-          name:'Orders',
+          name:'Companies',
           icon: <FaSellsy />
         },
         {
-          name: 'Recyle bin',
+          name: 'Tools',
           icon: <MdOutlinePayment />,
         },
         {
-          name: 'Receiveable',
+          name: 'Orders',
           icon: <IoIosNotifications /> ,
         },
-        {
-            name: 'Payables',
-            icon: <RiSecurePaymentLine />  ,
-          },
-          {
-            name:'User',
-            icon:<IoPeopleSharp />
-          },
-          {
-            name:"Employees",
-            icon:<IoPeopleSharp />
-         },
+       
+         
           {
             name:"Reports",
             icon: <TbReportAnalytics />,

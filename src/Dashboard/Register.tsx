@@ -18,7 +18,7 @@
 
 import Nav from "@/DashComponents/Nav";
 import SideParsm from "@/DashComponents/SideParsm";
-import { RegisterFn, resetRegisterState } from "@/Redux/Slice/RegisterSlice";
+import { RegisterFn, resetRegisterState } from "@/Redux2/Slice/RegisterSlice";
 import { AppDispatch, RootState } from "@/Redux/Store";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";

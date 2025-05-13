@@ -16,7 +16,7 @@ function DhashRoute() {
     <div className='flex w-[100%] '>
        <div className='hidden lg:block fixed z-10 w-[250px] '><DhashSide/></div>
        
-       <div className={`bg-[#EEF0F4] mainVew  lg:ml-[250px] w-full h-[100%]  px-8 py-0 ${theme === 'dark' ? 'DarkTheme' : ''}`}>
+       <div className={` mainVew  lg:ml-[250px] w-full h-[100%]  px-8 py-0 ${theme === 'dark' ? 'DarkTheme' : ''}`}>
        <Outlet/>
        </div>
     </div>

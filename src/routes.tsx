@@ -1,373 +1,120 @@
-import {createBrowserRouter ,Outlet} from 'react-router-dom'
-// import Header from './components/Header/Header'
-import HomePage from './pages/Home'
-import Navbars from './components/ui/nav'
+import React, { ReactNode } from 'react';
+import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+
+import HomePage from './pages/Home';
+import Navbars from './components/ui/nav';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import Footer from './pages/Footer';
 import DhashRoute from './Dashboard/DhashRoute';
-// import Dashhome from './Dashboard/Dashhome';
 import Notfound from './Dashboard/Notfound';
-import Allproducts from './pages/Allproducts'
-import Dalboadeeg from './pages/dalboadeeg'
-import Order from './pages/order'
-import Companyes from './pages/companys'
-import Ordesevice from './pages/Ordeservice'
-import OrderSummary from './pages/OrderSummary'
-import Reports from './Dashboard/Reports';
-import Login from './pages/Login'
-import SignupForm from './pages/SignupForm'
+import Allproducts from './pages/Allproducts';
+import Order from './pages/order';
+import Companyes from './pages/companys';
+import Ordesevice from './pages/Ordeservice';
+import OrderSummary from './pages/OrderSummary';
+import Home from './Dashboard/DasHome';
+import Login from './pages/Login';
+import SignupForm from './pages/SignupForm';
 import Register from './Dashboard/Register';
 import EmployersData from './DashComponents/ui/EmployersData';
-import  Addproducts from './pages/Addproducts'
-import SingleProduct from './pages/SingleProduct'
-import Addorderservice from './pages/AddorderService'
-import Adeeg from './pages/Adeeg'
-import LayoutDashboard from './components/ui/dashboard/LayoutDashboard'
-import Home from './components/ui/dashboard/Home'
-import Tooslstable from './components/ui/dashboard/Tables/Toolstable'
-import Bookings from './components/ui/dashboard/Tables/Bookings'
-import OrderList from './components/ui/dashboard/Tables/OrderList'
-import CompaniesList from './components/ui/dashboard/Tables/companiesList'
-import UsersList from './components/ui/dashboard/Tables/UsersList'
-import NotificationsList from './components/ui/dashboard/Tables/NotificationsList'
-import Settings from './components/ui/dashboard/Tables/Settings'
-import Addtools from './components/ui/dashboard/Forms/Addtools'
-import Addbooking from './components/ui/dashboard/Forms/Addbooking'
-import Addcompanis from './components/ui/dashboard/Forms/Addcompanis'
-import Addnotification from './components/ui/dashboard/Forms/Addnotification'
-import Addorder from './components/ui/dashboard/Forms/Addorder'
-import Adduser from './components/ui/dashboard/Forms/Adduser'
+import Addproducts from './pages/Addproducts';
+import SingleProduct from './pages/SingleProduct';
+import Addorderservice from './pages/AddorderService';
+import Adeeg from './pages/Adeeg';
+import Tools from './Dashboard/Tools';
+import Orders from './Dashboard/Orders';
+import Users from './Dashboard/Users'
+import Companies from './Dashboard/Companies'
+import Reports from './Dashboard/Reports'
+import Blog from './pages/Blog';
+import BlogPage from './pages/blogPage';
+import ServiceDetails from './pages/ServiceDetails';
+import BolgDetails from './pages/bolgDetails';
 
-const Router =()=>{
-  // const search =(query)=>{
-    
-  // }
- return(
-    <div>
-        <div className=" ">
-            {/* <Head/> */}
-        </div>
-    <div className=" static z-50">
-      {/* <Search  /> */}
-           <Navbars/>
-        {/* <Header/> */}
-    </div>
-    <div className='  '>
-        <Outlet/>
-    </div>
-    <div className=''><Footer/></div>
-    </div>
- )
+// ✅ Auth check
+const isAuthenticated = () => !!localStorage.getItem('token');
+
+// ✅ ProtectedRoute TypeScript component
+interface ProtectedRouteProps {
+  children: ReactNode;
 }
-export default Router
 
-export const router= createBrowserRouter([
-    {
-        path:'/',
-        element: <Router/>,
-        children:[
-            {
-                index: true,
-                element: <HomePage/>
-            },
-           
-            {
-                path:'register',
-                // element: <Register/>
-            },
-            {
-              path:`order`,
-            //   element:<OrderPage/>
-            },
-            {
-                path: "shop",
-                // element: <ShopP/>
-            },
-           
-           
-            {
-                path:'login',
-                // element:<Login/>
-            },
-            {
-              path: 'product/:id',
-            //   element: <ProductItem />,
-            },
-            {
-              path:'product/veiw',
-            //   element:<ProductView/>
-            },
-            {
-              path:'cart',
-            //   element:<CartPage/>
-            },
-            {
-              path:'allProducts',
-            //   element:<ProductsHome/>
-            },
-            {
-                path:'Contact',
-                element:<Contact/>
-              },
-              {
-                path:'about',
-                element:<About/>
-              },
-              {
-                path:'products',
-                element:<Allproducts/>
-              },
-              {
-                path:'Dalboadeeg',
-                element:<Dalboadeeg/>
-              },
-              {
-                path:'Orderpage',
-                element:<Order/>
-              },
-              {
-                path:'Companyes',
-                element:<Companyes/>
-              },
-              {
-                path:'Ordesevice',
-                element:<Ordesevice/>
-              },
-              {
-                path:'OrderSummary',
-                element:<OrderSummary/>
-              },
-             
-              {
-                path:'Loginpage',
-                element:<Login/>
-              },
-              {
-                path:'SignupForm',
-                element:<SignupForm/>
-              },
-              {
-                path:'Addproducts',
-                element:<Addproducts/>
-              },
-              {
-                path:'SingleProduct',
-                element:<SingleProduct/>
-              },
-              {
-                path:'Addorderservice',
-                element:<Addorderservice/>
-              },
-              {
-                path:"Adeeg",
-                element:<Adeeg/>
-              }
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+  return isAuthenticated() ? children : <Navigate to="/loginpage" replace />;
+};
 
-        ]
-    },
-    {
-      path:'/Dashboard',
-      element:<LayoutDashboard/>,
-      children:[
-        {
-          index:true,
-          element:<Home/>
-        },
-        {
-          path:"Tooslstable",
-          element:<Tooslstable/>
-        },
-        {
-          path:"Bookings",
-          element:<Bookings/>
-        },
-        {
-          path:"OrderList",
-          element:<OrderList/>
-        },
-       { 
-        path:"companiesList",
-        element:<CompaniesList/>
-      },
-      {
-        path:"UsersList",
-        element:<UsersList/>
-      },
-      {
-        path:"NotificationsList",
-        element:<NotificationsList/>
-      },
-      {
-        path:"settings",
-        element:<Settings/>
-      },
-      {
-        path:"Addbooking",
-        element:<Addbooking/>
-      },
-      {
-        path:"Adduser",
-        element:<Adduser/>
-      },
-      {
-        path:"Addcompanis",
-        element:<Addcompanis/>
-      },
-      {
-        path:"Addnotification",
-        element:<Addnotification/>
-      },
-      {
-        path:"Addorder",
-        element:<Addorder/>
-      },
-      {
-        path:"Addtools",
-        element:<Addtools/>
-      },
+// ✅ ProtectedLayout wrapper for public pages
+const ProtectedLayout = () => {
+  return isAuthenticated() ? (
+    <>
+      <Navbars />
+      <Outlet />
+      <Footer />
+    </>
+  ) : (
+    <Navigate to="/loginpage" replace />
+  );
+};
 
-      ]
-    }
-   
-    // {
-    //   path:'Dashboard',
-    //   element:<DhashRoute/>,
-    //   children:[
-    //     {
-    //       index:true,
-    //       element:<Reports/>
-    //     },
-    //     {
-    //       path:"Home",
-    //       element:<Reports/>
-    //     },
-    //     {
-    //       path:'*',
-    //       element:<Notfound/>
-    //     },
-    //     {
-    //       path:"Teams",
-    //       element:<EmployersData/>
-    //     },
-    //     {
+// ✅ Routing
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <ProtectedLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: 'contact', element: <Contact /> },
+      { path: 'about', element: <About /> },
+      { path: 'products', element: <Allproducts /> },
+      { path: 'orderpage', element: <Order /> },
+      { path: 'companyes', element: <Companyes /> },
+      { path: 'ordesevice', element: <Ordesevice /> },
+      { path: 'ordersummary', element: <OrderSummary /> },
+      { path: 'addproducts', element: <Addproducts /> },
+      { path: 'singleproduct', element: <SingleProduct /> },
+      { path: 'servicedetails', element: <ServiceDetails /> },
+      { path: 'addorderservice', element: <Addorderservice /> },
+      { path: 'adeeg', element: <Adeeg /> },
+      { path: 'blog', element: <Blog /> },
+      { path: 'blogpage', element: <BlogPage /> },
+      { path: 'bolgdetails', element: <BolgDetails /> },
+      { path: '*', element: <Notfound /> },
+    ],
+  },
+  {
+    path: '/loginpage',
+    element: <Login />,
+  },
+  {
+    path: '/signupform',
+    element: <SignupForm />,
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute>
+        <DhashRoute />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'home', element: <Home /> },
+      { path: 'tools', element: <Tools /> },
+      { path: 'orders', element: <Orders /> },
+      { path: 'Users', element: <Users /> },
+      { path: 'Companies', element: <Companies /> },
+      { path: 'teams', element: <EmployersData /> },
+      { path: 'user', element: <Register /> },
+      { path: 'Reports', element: <Reports /> },
+      { path: '*', element: <Notfound /> },
+    ],
+  },
+]);
 
-    //       // path:"User",
-    //       // element:<Register/>
-    //     },
-    //     {
-    //       // path:"Vendor/CreateVendor",
-    //       // element:<SheetCreateV/>
-    //     },
-    //     {
-    //       // path:"Products",
-    //       // element:<Products/>
-    //     },
-    //     {
-    //       path:"Products/Expenses",
-    //       // element:<AllExpenses/>
-    //     },
-    //     {
-    //       path:"Products/Expenses/Create",
-    //       // element:<CreateExpenses/>
-    //     },
-    //     {
-    //       path:"Products/Expenses/Update/:expense_id",
-    //       // element:<UpdateExpenses/>
-    //     },
-    //     {
-    //       // path:"Products/Create",
-    //       // element:<ProductCreate/>
-    //     },
-    //     {
-    //       path:"Purchases",
-    //       // element:<CreatePurchase/>
-    //     },
-    //     {
-    //       path:"Sales",
-    //       // element:<SAlesCreate/>
-    //     },
-    //     {
-    //       // path:"Sales/CreateCustomer",
-    //       // element:<CreateCustomer/>
-    //     },
-    //     {
-    //       path:"User",
-    //       element:<Register/>
-    //     },
-    //     {
-    //       path:"Payables/payment/:purchase_id",
-    //       // element:<Payment/>
-    //     },
-    //     {
-    //       path:"TopSales",
-    //       // element:<TopSale/>
-    //     },
-    //     {
-    //       path:"Reports",
-    //       element:<Reports/>
-    //     },
-    //     {
-    //       path:"Reports/SaleReport",
-    //       // element:<SaleReports/>
-    //     },
-    //     {
-    //       // path:"Reports/ExpensesReport",
-    //       // element:<ExpensesReport/>
-    //     },
-    //     {
-    //       path:"Reports/PurchasesReport",
-    //       // element:<PurchaseReport/>
-    //     },
-    //     {
-    //       path:"Reports/Income",
-    //       // element:<ProfitOr/>
-    //     },
-    //     {
-    //       path:"Receipt",
-    //       // element:<Recipt/>
-    //     },
-    //     {
-    //       path:"Vendor/Update/:vendor_id",
-    //       // element:<UpdateVendors/>
-    //     },
-    //     {
-    //       // path:"Products/Update/:product_id",
-    //       // element:<ProductUpdate/>
-    //     },
-    //     {
-    //       path:"Receiveable",
-    //       // element:<RecieveAble/>
-    //     },
-    //     {
-    //       path:"Receiveable/RecieveAblepayment/:sale_id",
-    //       // element:<ReceivePayment/>
-    //     },
-    //     {
-    //       path:"Employees",
-    //       // element:<AllEmoloye/>
-    //     },
-    //     {
-    //       path:"Employees/New",
-    //     //   element:<CreateEmployees/>
-    //     },
-    //     {
-    //       path:"Employees/update/:employee_id",
-    //       // element:<UpdateEmployee/>
-    //     },
-    //     {
-    //       path:"Employees/salaries",
-    //       // element:<Allsalary/>
-    //     },
-    //     {
-    //       path:"Employees/salaries/newSalry",
-    //       // element:<CreateSalary/>
-    //     },
-    //     {
-    //       path:"Employees/salaries/update/:employee_id",
-    //       // element:<UpdateSalary/>
-    //     }
+// ✅ AppRouter Component
+const AppRouter = () => {
+  return <RouterProvider router={router} />;
+};
 
-    //   ]
-    // }
- ])
+export default AppRouter;

@@ -1,171 +1,68 @@
-"use client";
+import { Button } from "@/components/ui/button"
+import { CheckCircle, Calendar, Download, Home } from "lucide-react"
+import {Link} from "react-router-dom"
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-
-// Replace with your actual Stripe public key
-const stripePromise = loadStripe("your-publishable-key-here");
-
-interface OrderItem {
-  id: number;
-  name: string;
-  quantity: number;
-  price: number;
-}
-
-const items = [
-  { id: 1, name: "Product A", quantity: 2, price: 25 },
-  { id: 2, name: "Product B", quantity: 1, price: 30 },
-  { id: 3, name: "Product C", quantity: 3, price: 15 },
-];
-
-// Stripe Payment Component
-function StripePayment({ total }: { total: number }) {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [paymentLoading, setPaymentLoading] = useState(false);
-
-  const handleStripePayment = async () => {
-    if (!stripe || !elements) {
-      console.error("Stripe has not loaded yet!");
-      return;
-    }
-
-    setPaymentLoading(true);
-
-    try {
-      const res = await fetch("/api/create-payment-intent", {
-        method: "POST",
-        body: JSON.stringify({ amount: total * 100 }), // Amount in cents
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const { clientSecret } = await res.json();
-
-      const cardElement = elements.getElement(CardElement);
-
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: { card: cardElement! },
-      });
-
-      if (error) {
-        console.error("Payment failed:", error.message);
-        alert("Payment failed! Please try again.");
-      } else if (paymentIntent?.status === "succeeded") {
-        console.log("Payment succeeded:", paymentIntent);
-        alert("Payment successful!");
-      }
-    } catch (err) {
-      console.error("Error during payment:", err);
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setPaymentLoading(false);
-    }
-  };
-
+export default function BookingSuccessPage() {
   return (
-    <div className="mt-6">
-      <div className="mb-4 p-4 border rounded-md">
-        <CardElement />
-      </div>
-      <Button
-        onClick={handleStripePayment}
-        disabled={paymentLoading}
-        className="w-full border border-gray-300 hove:text-gray-700 hover:bg-gray-100 bg-green-800 text-white"
-      >
-        {paymentLoading ? "Processing..." : "Pay with Stripe"}
-      </Button>
-    </div>
-  );
-}
-
-function OrderSummary() {
-  const [isZaadDialogOpen, setIsZaadDialogOpen] = useState(false);
-  const [zaadNumber, setZaadNumber] = useState("");
-
-  const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const tax = subtotal * 0.1; // Assuming 10% tax
-  const total = subtotal + tax;
-
-  const handleZaadPayment = () => {
-    alert(`Processing Zaad payment for number: ${zaadNumber}`);
-    setIsZaadDialogOpen(false);
-    setZaadNumber("");
-  };
-
-  return (
-    <div className="py-28 px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
-
-        {items.map((item) => (
-          <div key={item.id} className="flex justify-between mb-2">
-            <span>{item.name} x {item.quantity}</span>
-            <span>${(item.price * item.quantity).toFixed(2)}</span>
+    <div className="min-h-screen bg-gray-50 py-12 flex items-center">
+      <div className="container mx-auto px-4 max-w-2xl">
+        <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="h-8 w-8 text-green-600" />
           </div>
-        ))}
 
-        <div className="border-t border-gray-200 mt-4 pt-4">
-          <div className="flex justify-between mb-2">
-            <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between mb-2">
-            <span>Tax</span>
-            <span>${tax.toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between font-bold">
-            <span>Total</span>
-            <span>${total.toFixed(2)}</span>
-          </div>
-        </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Booking Confirmed!</h1>
+          <p className="text-gray-600 mb-6">Your tractor rental has been successfully booked.</p>
 
-        <div className="mt-6 space-y-4">
-          <Button
-            onClick={() => setIsZaadDialogOpen(true)}
-            className="w-full bg-green-600 hover:bg-green-700 text-white"
-          >
-            Pay with Zaad
-          </Button>
-        </div>
-
-        <Dialog open={isZaadDialogOpen} onOpenChange={setIsZaadDialogOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Enter Zaad Number</DialogTitle>
-              <DialogDescription>
-                Please enter your Zaad number to proceed with the payment.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="py-4">
-              <Label htmlFor="zaadNumber" className="block mb-2 text-xl text-green-800">
-                Fadlan kuso dir Number Kan
-              </Label>
-              <p className="mt-5 text-lg font-semibold">063 4860444</p>
+          <div className="bg-gray-50 rounded-lg p-6 mb-6">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-20 h-20 bg-gray-100 rounded-md overflow-hidden flex-shrink-0">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-28%20105154-GRTkQy3cacRGdRq20zfwq9gI4f8A6p.png"
+                  alt="Cagaf Tractor"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="text-left">
+                <h3 className="font-medium">Cagaf Tractor</h3>
+                <div className="flex items-center text-sm text-gray-500 mt-1">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  April 28 - May 1, 2025 (4 days)
+                </div>
+                <div className="text-sm text-gray-500 mt-1">Booking ID: #AGR28042025</div>
+              </div>
             </div>
-            <DialogFooter />
-          </DialogContent>
-        </Dialog>
 
-        {/* Stripe Payment Form */}
-        <Elements stripe={stripePromise}>
-          <StripePayment total={total} />
-        </Elements>
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              <div className="flex justify-between text-sm mb-1">
+                <span className="text-gray-600">Total Amount</span>
+                <span className="font-medium">$660.00</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Payment Status</span>
+                <span className="text-green-600 font-medium">Paid</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-gray-600 mb-6">
+            A confirmation email has been sent to your email address with all the details.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Button variant="outline" className="flex items-center justify-center gap-2">
+              <Download className="h-4 w-4" />
+              Download Receipt
+            </Button>
+            <Link to="/" className="w-full">
+              <Button className="w-full bg-green-600 hover:bg-green-700 flex items-center justify-center gap-2">
+                <Home className="h-4 w-4" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default OrderSummary;

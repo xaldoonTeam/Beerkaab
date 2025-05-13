@@ -3,10 +3,13 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowRight, Calendar, Clock, Leaf, Mail, MapPin, Phone, Tractor, Wrench } from "lucide-react"
 
 function WhyUsSection() {
   return (
-    <section className="py-10 px-4 sm:px-6 md:px-8 lg:px-20 mt-10 sm:mt-20">
+    <>
+    <section className="py-10 px-4 sm:px-6 md:px-8 lg:px-20 mt-10 sm:mt-20 ">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
           {/* Content */}
@@ -98,6 +101,60 @@ function WhyUsSection() {
         </div>
       </div>
     </section>
+     {/* How It Works Section */}
+     {/* <section id="how-it-works" className="bg-gray-50 py-16 ">
+          <div className="container max-w-7xl mx-auto">
+            <div className="mb-12 text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">How It Works</h2>
+              <p className="mt-4 text-gray-500">
+                Renting agriculture tools and booking services is simple and straightforward
+              </p>
+            </div>
+            <div className="grid gap-8 md:grid-cols-3">
+              <Card className="border-none shadow-md">
+                <CardHeader className="text-center">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                    <Calendar className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="mt-4 font-bold text-xl">1. Book Online</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-center text-gray-500">
+                    Browse our selection of tools and services, select your dates, and book online in minutes.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-none shadow-md">
+                <CardHeader className="text-center">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                    <Tractor className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="mt-4">2. Receive Equipment</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-center text-gray-500">
+                    Pick up your equipment at our location or choose our delivery service for added convenience.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="border-none shadow-md">
+                <CardHeader className="text-center">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                    <Wrench className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="mt-4">3. Get Support</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-center text-gray-500">
+                    Our team provides full support, including equipment training and technical assistance when needed.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+     */}
+    </>
   )
 }
 

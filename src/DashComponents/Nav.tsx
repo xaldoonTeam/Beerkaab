@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/Redux/Store';
 import { BiSolidDoorOpen } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import { logout } from '@/Redux/Slice/userinfo';
+import { Url, errorMsg } from '@/interfaces';
 import { useNavigate } from 'react-router-dom';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -87,7 +87,7 @@ function Nav() {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    dispatch(logout());
+    // dispatch(logout());
     navigate('/');
   };
 

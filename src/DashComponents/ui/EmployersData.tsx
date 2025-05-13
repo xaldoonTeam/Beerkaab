@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { getAllUsersFn } from "@/Redux/Slice/AllCustomers";
+import { getAllUsersFn } from "@/Redux2/Slice/AllCustomers";
 import SideParsm from "../SideParsm";
 import Nav from "../Nav";
 // Make sure this import points to the correct slice

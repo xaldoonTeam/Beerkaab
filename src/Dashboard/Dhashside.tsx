@@ -69,7 +69,7 @@ import { useStateContext } from '../DashComponents/ui/ContextProvider';
 import { useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/Redux/Store';
 import { useDispatch } from 'react-redux';
-import { getOneCompanayFN } from '@/Redux/Slice/GetOneCompanaySlice';
+import { getOneCompanayFN } from '@/Redux2/Slice/GetOneCompanaySlice';
 
 const DhashSide = () => {
   const { currentColor, activeMenu, setActiveMenu, screenSize, } = useStateContext();
@@ -110,7 +110,7 @@ const DhashSide = () => {
         <>
           <div className="flex justify-between items-center">
             <Link to="/Dashboard/Home" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-[20px] font-extrabold tracking-tight dark:text-white  text-slate-900">
-              <span>{GetOneCompanayState.data.company_name}  <span className='text-orange-700'>Beer</span>Kaab </span>
+              <span>DATA  <span className='text-orange-700'>Beer</span>Kaab </span>
             </Link>
             <div content="Menu" position="BottomCenter">
               <button
@@ -126,7 +126,7 @@ const DhashSide = () => {
           <div className="mt-10 ">
             {links.map((item) => (
               <div key={item.title}>
-                <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
+                <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase ">
                   {item.title}
                 </p>
                 {item.links.map((link) => (
